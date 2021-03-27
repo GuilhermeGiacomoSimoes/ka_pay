@@ -4,7 +4,7 @@ services:
 
   api:
     build: .
-    container_name: "api"
+    container_name: "ka_pay_api"
     entrypoint: ./.docker/entrypoint.sh
     ports: 
       - 3000:3000
