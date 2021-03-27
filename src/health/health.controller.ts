@@ -9,14 +9,14 @@ import {
 export class HealthController {
   constructor(
     private helth: HealthCheckService,
-    private http: HttpHealthIndicator
+    private http: HttpHealthIndicator,
   ) {}
 
   @Get()
   @HealthCheck()
   check() {
     return this.helth.check([
-      () => this.http.pingCheck('', ''),
+      () => this.http.pingCheck('nestjs-docs', 'https://docs.nestjs.com'),
     ]);
   }
 }
