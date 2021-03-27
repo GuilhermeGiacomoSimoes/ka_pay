@@ -25,6 +25,6 @@ export class V1HealthController {
   @Get('/database')
   @HealthCheck()
   database() {
-    return this.helth.check([() => this.db.pingCheck('database')]);
+    return this.helth.check([() => this.db.pingCheck('DATABASE_CONNECTION')]);
   }
 }
