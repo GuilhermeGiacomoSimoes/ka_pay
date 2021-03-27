@@ -5,6 +5,12 @@
 # Docs
 /documentation
 
+# Yarn
+yarn.lock*
+
+# Package
+package-lock.json
+
 # Logs
 logs
 *.log
