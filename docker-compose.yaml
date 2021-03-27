@@ -10,3 +10,18 @@ services:
       - 3000:3000
     volumes:
       - .:/home/node/app
+
+  mysql:
+    container_name: "ka_pay_mysql"
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    restart: on-failure:2
+    ports: 
+      - "3306:3306"
+    volumes: 
+      - "./.docker/dbdata:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: ka_pay
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root

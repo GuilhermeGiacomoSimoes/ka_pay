@@ -1,2 +1,7 @@
 *.*
+ib_buffer_pool
+ib_logfile0
+ibdata1
+ib_logfile1
+ibtmp1
 !.gitignore
