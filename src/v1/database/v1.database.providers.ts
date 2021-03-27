@@ -9,7 +9,7 @@ export const v1DatabaseProviders = [
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'test',
+      database: 'kpay',
       entities: [
           __dirname + '/../**/*.entity{.ts,.js}',
       ],
