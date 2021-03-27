@@ -62,6 +62,21 @@ $ npm run test:cov
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
+## Documentation
+Compodoc is a documentation tool for Angular applications. Since Nest and Angular share similar project and code structures, Compodoc works with Nest applications as well.
+
+### Setup
+Setting up Compodoc inside an existing Nest project is very simple. Start by adding the dev-dependency with the following command in your OS terminal:
+
+$ npm i -D @compodoc/compodoc
+
+### Generation
+Generate project documentation using the following command (npm 6 is required for npx support). See the official documentation for more options.
+
+$ npm run doc
+or
+$ yarn doc
+
 ## Stay in touch
 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
