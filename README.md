@@ -73,7 +73,9 @@ $ npm i -D @compodoc/compodoc
 ### Generation
 Generate project documentation using the following command (npm 6 is required for npx support). See the official documentation for more options.
 
-$ npx @compodoc/compodoc -p tsconfig.json -s
+$ npm run doc
+or
+$ yarn doc
 
 ## Stay in touch
 
