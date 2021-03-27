@@ -1,6 +1,6 @@
 import { createConnection } from 'typeorm';
 
-export const databaseProviders = [
+export const v1DatabaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: async () => await createConnection({
