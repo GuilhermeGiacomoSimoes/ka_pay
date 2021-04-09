@@ -5,6 +5,9 @@
 # Docs
 /documentation
 
+# Yarn
+yarn.lock*
+
 # Logs
 logs
 *.log
