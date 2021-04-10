@@ -2,9 +2,17 @@
 /dist
 /node_modules
 
+<<<<<<< HEAD
 # configurations
 package.json  
 package-lock.json
+=======
+# Docs
+/documentation
+
+# Yarn
+yarn.lock*
+>>>>>>> 60b5c0ad03c45734e695dbffad4782f8b84e42d7
 
 # Logs
 logs
