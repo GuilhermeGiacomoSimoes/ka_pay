@@ -68,9 +68,9 @@ describe('ShopkeeperService', () => {
       await expect(service.createShopKeeper(mockData)).rejects.toThrow(new InternalServerErrorException());
     })
 
-    // it('Should throw if name length is greater than 10 characters', async () => {
-    //   mockData.name = 'Teste de nome maior que 10 caracteres';
-    //   await (expect(service.createShopKeeper(mockData))).rejects.toThrow(new BadRequestException('The name must have a maximum of 10 characters'))
-    // })
+    it('Should throw if name length is greater than 20 characters', async () => {
+      mockData.name = 'Teste de nome maior que 20 caracteres';
+      await (expect(service.createShopKeeper(mockData))).rejects.toThrow(new BadRequestException('The name must have a maximum of 20 characters'))
+    })
   })
 });

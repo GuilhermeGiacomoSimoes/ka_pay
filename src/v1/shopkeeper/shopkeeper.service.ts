@@ -23,9 +23,9 @@ export class ShopkeeperService {
 
   async createShopKeeper(data: CreateShopkeeper): Promise<ShopKeeper> {
 
-    // if (data.name.length > 10) {
-    //   throw new BadRequestException('The name must have a maximum of 10 characters')
-    // }
+    if (data.name.length > 20) {
+      throw new BadRequestException('The name must have a maximum of 20 characters')
+    }
 
     return await this.shopKeeperRepository.createShopKeeper(data)
 
