@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import * as helper from '../helper/Helper';
 import {
   HealthCheckService,
   HttpHealthIndicator,
