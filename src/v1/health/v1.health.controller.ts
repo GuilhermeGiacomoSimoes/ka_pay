@@ -28,9 +28,4 @@ export class V1HealthController {
   database() {
     return this.helth.check([() => this.db.pingCheck('kpay')]);
   }
-
-  @Get('encrypt/:param')
-  encrypt_test(@Param('param') param: string) {
-   return helper.encrypt(param);
-  }
 }
