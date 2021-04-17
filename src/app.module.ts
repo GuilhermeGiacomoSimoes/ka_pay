@@ -6,11 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
 	imports: [V1Module, TerminusModule, TypeOrmModule.forRoot({
 		type: 'mysql',
-		host: 'localhost',
+		host: 'mysql',
 		port: 3306,
 		username: 'root',
 		password: 'root',
-		database: 'kpay',
+		database: 'ka_pay',
 		entities: [],
 		synchronize: true,
 	})],
