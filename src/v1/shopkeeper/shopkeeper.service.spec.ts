@@ -68,6 +68,20 @@ describe('ShopkeeperService', () => {
       await expect(service.createShopKeeper(mockData)).rejects.toThrow(new InternalServerErrorException());
     })
 
+    it('Should not throw if repository returns', async() => {
+      await expect(service.createShopKeeper(mockData)).resolves.not.toThrow()
+    })
+
+    it('Should be called with correct params', async() => {
+      await service.createShopKeeper(mockData)
+      expect(repository.createShopKeeper).toBeCalledWith(mockData)
+    })
+
+    it('Should be called with corret params', async() => {
+      (repository.createShopKeeper as jest.Mock).mockReturnValueOnce(mockData)
+      expect(await service.createShopKeeper(mockData)).toEqual(mockData)
+    })
+
     it('Should throw if name length is greater than 20 characters', async () => {
       mockData.name = 'Teste de nome maior que 20 caracteres';
       await (expect(service.createShopKeeper(mockData))).rejects.toThrow(new BadRequestException('The name must have a maximum of 20 characters'))
