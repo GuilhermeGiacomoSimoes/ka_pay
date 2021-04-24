@@ -6,6 +6,6 @@ import { ShopkeeperModule } from './shopkeeper/shopkeeper.module';
 
 @Module({
   imports: [TerminusModule, ShopkeeperModule],
-  controllers: [V1Controller, V1HealthController, V1Controller],
+  controllers: [V1Controller, V1HealthController],
 })
 export class V1Module {}
