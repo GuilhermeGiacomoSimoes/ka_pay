@@ -8,8 +8,16 @@ export class EstablishmentService {
     private readonly establishmentRepository: EstablishmentRepository,
   ) {}
 
-  async createEstablishment(id: number): Promise<Establishment> {
-    return await this.establishmentRepository.getEstablishment(id);
+  async createEstablishment(
+    establishment: Establishment,
+  ): Promise<Establishment> {
+    return await this.establishmentRepository.createEstablishment(
+      establishment,
+    );
+  }
+
+  async updateEstablishment(id: number): Promise<Establishment> {
+    return await this.establishmentRepository.updateEstablishment(id);
   }
 
   async getEstablishment(id: number): Promise<Establishment> {

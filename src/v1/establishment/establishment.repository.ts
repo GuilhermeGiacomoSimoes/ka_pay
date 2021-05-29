@@ -7,8 +7,10 @@ export class EstablishmentRepository extends Repository<Establishment> {
     return new Establishment();
   }
 
-  async createEstablishment(id: number): Promise<Establishment> {
-    return new Establishment();
+  async createEstablishment(
+    establishment: Establishment,
+  ): Promise<Establishment> {
+    return establishment;
   }
 
   async updateEstablishment(id: number): Promise<Establishment> {
