@@ -1,10 +1,9 @@
 version: '3'
 
 services:
-
   api:
     build: .
-    container_name: "ka_pay_api"
+    container_name: 'ka_pay_api'
     entrypoint: ./.docker/entrypoint.sh
     ports:
       - 3000:3000
@@ -12,14 +11,14 @@ services:
       - .:/home/node/app
 
   mysql:
-    container_name: "ka_pay_mysql"
+    container_name: 'ka_pay_mysql'
     image: mysql:5.7
     command: --innodb-use-native-aio=0
     restart: on-failure:2
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
-      - "./.docker/dbdata:/var/lib/mysql"
+      - './.docker/dbdata:/var/lib/mysql'
     environment:
       MYSQL_DATABASE: ka_pay
       MYSQL_ROOT_USER: root
