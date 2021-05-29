@@ -1,5 +1,7 @@
+import { InternalServerErrorException } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
-import { CreateShopkeeper } from './dto/create.shopkeeper.dto';
+import { CreateShopkeeperDTO } from './dto/create.shopkeeper.dto';
+import { UpdateShopkeeperDTO } from './dto/update.shopkeeper.dto';
 import { ShopKeeper } from './entities/shopkeeper.entity';
 
 @EntityRepository(ShopKeeper)
@@ -8,7 +10,11 @@ export class ShopKeeperRepository extends Repository<ShopKeeper> {
     return new ShopKeeper();
   }
 
-  async createShopKeeper(data: CreateShopkeeper): Promise<ShopKeeper> {
+  async createShopKeeper(data: CreateShopkeeperDTO): Promise<ShopKeeper> {
+    return new ShopKeeper();
+  }
+
+  async updateShopKeeper(data: UpdateShopkeeperDTO): Promise<ShopKeeper> {
     return new ShopKeeper();
   }
 }
