@@ -1,4 +1,4 @@
-export class CreateEstablishment {
+export class Establishment {
   uuid: string;
   name: string;
   street: string;

@@ -1,4 +1,4 @@
-export class CreateEstablishment {
+export interface CreateEstablishment {
   uuid: string;
   name: string;
   street: string;
