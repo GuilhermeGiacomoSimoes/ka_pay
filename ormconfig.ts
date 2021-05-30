@@ -7,7 +7,7 @@ export const configMySqlLocal: MysqlConnectionOptions = {
   username: 'root',
   password: 'root',
   database: 'kpay',
-  entities: [],
+  entities: ['src/v1/**/*.entity.ts'],
   synchronize: true,
 };
 
