@@ -14,8 +14,8 @@ export class ShopkeeperController {
         res.status(HttpStatus.OK).json([
             {
                 uuid: 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
-                name: 'Marcos Medeiros',
-                email: 'marcos.medeiros@kabum.com.br',
+                name: 'User Test',
+                email: 'user@test.com.br',
                 document: '123.456.789-00',
                 token: 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
                 phone: '5519912345678',
@@ -28,8 +28,8 @@ export class ShopkeeperController {
     findOne(@Param() uuid: string, @Res() res: Response): any {
         res.status(HttpStatus.OK).json({
                 uuid: 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
-                name: 'Marcos Medeiros',
-                email: 'marcos.medeiros@kabum.com.br',
+                name: 'User Test',
+                email: 'user@test.com.br',
                 document: '123.456.789-00',
                 token: 'da39a3ee5e6b4b0d3255bfef95601890afd80709',
                 phone: '5519912345678',
