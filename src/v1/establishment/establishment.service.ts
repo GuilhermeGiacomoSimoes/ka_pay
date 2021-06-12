@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Establishment } from './entities/establishment.entity';
 import { EstablishmentRepository } from './establishment.repository';
 
 @Injectable()
 export class EstablishmentService {
   constructor(
-    private readonly establishmentRepository: EstablishmentRepository,
+    @InjectRepository(EstablishmentRepository)
+    private establishmentRepository: EstablishmentRepository,
   ) {}
 
   async createEstablishment(
