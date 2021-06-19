@@ -16,4 +16,8 @@ export class ShopKeeperRepository extends Repository<ShopKeeper> {
   async updateShopKeeper(data: UpdateShopkeeperDTO): Promise<ShopKeeper> {
     return new ShopKeeper();
   }
+
+  async deleteShopKeeper(id: number): Promise<ShopKeeper> {
+    return new ShopKeeper();
+  }
 }

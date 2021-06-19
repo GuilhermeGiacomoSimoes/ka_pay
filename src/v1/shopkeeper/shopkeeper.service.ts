@@ -20,4 +20,7 @@ export class ShopkeeperService {
   async updateShopKeeper(data: UpdateShopkeeperDTO): Promise<any> {
     return await this.shopKeeperRepository.updateShopKeeper(data);
   }
+  async deleteShopKeeper(id: number): Promise<any> {
+    return await this.shopKeeperRepository.deleteShopKeeper(id);
+  }
 }

@@ -114,5 +114,35 @@ describe('ShopkeeperService', () => {
         new InternalServerErrorException(),
       );
     });
+
+    it('Should not throw if repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      await expect(service.updateShopKeeper(mockData)).resolves.not.toThrow();
+    });
+
+    it('Should be called with service correct params', async () => {
+      await service.updateShopKeeper(mockData);
+      expect(repository.updateShopKeeper).toBeCalledWith(mockData);
+    });
+
+    it('Should return when repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      expect(await service.updateShopKeeper(mockData)).toEqual(mockData);
+    });
+
+    it('Should throw if not called with correct params', async () => {
+      await service.updateShopKeeper(mockData);
+      expect(repository.updateShopKeeper).toBeCalledWith(mockData);
+    });
+    it('Should return when repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      expect(await service.updateShopKeeper(mockData)).toEqual(mockData);
+    });
+  });
+
+  describe('deleteShopKeeper', () => {
+    it('Should throw if repository throws', async () => {
+      
+    });
   });
 });
