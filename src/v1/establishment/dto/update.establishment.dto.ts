@@ -1,4 +1,4 @@
-export class CreateEstablishmentDTO {
+export class UpdateEstablish {
   uuid: string;
   name?: string;
   street?: string;
