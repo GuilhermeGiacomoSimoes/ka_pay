@@ -1,32 +1,47 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Establishment } from './entities/establishment.entity';
-import { EstablishmentRepository } from './establishment.repository';
+import { UpdateEstablish } from './dto/update.establishment.dto';
+import { Repository } from 'typeorm';
+import { CreateEstablishment } from './dto/create.establishment.dto';
 
 @Injectable()
 export class EstablishmentService {
   constructor(
-    @InjectRepository(EstablishmentRepository)
-    private establishmentRepository: EstablishmentRepository,
+    @InjectRepository(Establishment)
+    private establishmentRepository: Repository<Establishment>,
   ) {}
 
   async createEstablishment(
-    establishment: Establishment,
+    establishment: CreateEstablishment,
   ): Promise<Establishment> {
-    return await this.establishmentRepository.createEstablishment(
-      establishment,
-    );
+    try {
+      return await this.establishmentRepository.save(establishment);
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 
-  async updateEstablishment(id: number): Promise<Establishment> {
-    return await this.establishmentRepository.updateEstablishment(id);
+  async updateEstablishment(
+    establishment: UpdateEstablish,
+  ): Promise<Establishment> {
+    return await this.establishmentRepository.save(establishment);
   }
 
-  async getEstablishment(id: number): Promise<Establishment> {
-    return await this.establishmentRepository.getEstablishment(id);
+  async getEstablishment(id: string): Promise<Establishment> {
+    try {
+      return await this.establishmentRepository.findOneOrFail(id);
+    } catch (err) {
+      throw err;
+    }
   }
 
   async getAllEstablishment(): Promise<Establishment[]> {
-    return await this.establishmentRepository.getAllEstablishment();
+    return await this.establishmentRepository.find();
+  }
+
+  async removeEstablishment(id: string): Promise<any> {
+    return await this.establishmentRepository.delete(id);
   }
 }
