@@ -1,5 +1,4 @@
 export class CreateEstablishment {
-  uuid: string;
   name: string;
   street: string;
   number: number;
