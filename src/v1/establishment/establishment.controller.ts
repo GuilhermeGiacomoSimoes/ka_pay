@@ -1,4 +1,6 @@
-import { Controller, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { CreateEstablishment } from './dto/create.establishment.dto';
+import { UpdateEstablish } from './dto/update.establishment.dto';
 import { Establishment } from './entities/establishment.entity';
 import { EstablishmentService } from './establishment.service';
 
@@ -7,17 +9,21 @@ export class EstablishmentController {
   constructor(private readonly establishmentService: EstablishmentService) {}
 
   @Post()
-  createEstablishment(establishment: Establishment): Promise<Establishment> {
+  async createEstablishment(
+    @Body() establishment: CreateEstablishment,
+  ): Promise<Establishment> {
     return this.establishmentService.createEstablishment(establishment);
   }
 
   @Put()
-  async updateEstablishment(id: number): Promise<Establishment> {
-    return this.updateEstablishment(id);
+  async updateEstablishment(
+    @Body() establishment: UpdateEstablish,
+  ): Promise<Establishment> {
+    return this.establishmentService.updateEstablishment(establishment);
   }
 
   @Get()
-  async getEstablishment(id: number): Promise<Establishment> {
+  async getEstablishment(@Param('id') id: string): Promise<Establishment> {
     return this.establishmentService.getEstablishment(id);
   }
 
