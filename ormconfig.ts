@@ -1,5 +1,5 @@
 import { Establishment } from 'src/v1/establishment/entities/establishment.entity';
-import {ShopKeeper} from 'src/v1/shopkeeper/entities/shopkeeper.entity';
+import { ShopKeeper } from 'src/v1/shopkeeper/entities/shopkeeper.entity';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 
 export const configMySqlLocal: MysqlConnectionOptions = {
