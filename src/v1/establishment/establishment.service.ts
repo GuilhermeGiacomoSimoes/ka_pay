@@ -1,22 +1,23 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { Establishment } from './entities/establishment.entity';
 import { UpdateEstablish } from './dto/update.establishment.dto';
-import { Repository } from 'typeorm';
-import { CreateEstablishment } from './dto/create.establishment.dto';
+import { CreateEstablishmentDTO } from './dto/create.establishment.dto';
+import { EstablishmentRepository } from './establishment.repository';
 
 @Injectable()
 export class EstablishmentService {
   constructor(
-    @InjectRepository(Establishment)
-    private establishmentRepository: Repository<Establishment>,
+    @Inject('EstablishmentRepositoryProvider')
+    private readonly establishmentRepository: EstablishmentRepository,
   ) {}
 
   async createEstablishment(
-    establishment: CreateEstablishment,
+    establishment: CreateEstablishmentDTO,
   ): Promise<Establishment> {
     try {
-      return await this.establishmentRepository.save(establishment);
+      return await this.establishmentRepository.createEstablishment(
+        establishment,
+      );
     } catch (err) {
       console.log(err);
       return null;
@@ -26,22 +27,24 @@ export class EstablishmentService {
   async updateEstablishment(
     establishment: UpdateEstablish,
   ): Promise<Establishment> {
-    return await this.establishmentRepository.save(establishment);
+    return await this.establishmentRepository.updateEstablishment(
+      establishment,
+    );
   }
 
   async getEstablishment(id: string): Promise<Establishment> {
     try {
-      return await this.establishmentRepository.findOneOrFail(id);
+      return await this.establishmentRepository.findById(id);
     } catch (err) {
       throw err;
     }
   }
 
   async getAllEstablishment(): Promise<Establishment[]> {
-    return await this.establishmentRepository.find();
+    return await this.establishmentRepository.findAll();
   }
 
   async removeEstablishment(id: string): Promise<any> {
-    return await this.establishmentRepository.delete(id);
+    return await this.establishmentRepository.removeEstablishment(id);
   }
 }
