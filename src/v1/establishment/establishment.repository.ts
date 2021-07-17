@@ -14,7 +14,7 @@ export class EstablishmentRepository {
   ) {}
 
   public async findAll(): Promise<Establishment[]> {
-    return await this.repositoryORM.find({});
+    return await this.repositoryORM.find();
   }
 
   public async findById(uuid: string): Promise<Establishment> {
