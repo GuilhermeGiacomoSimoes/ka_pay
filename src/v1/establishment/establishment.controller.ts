@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
-import { CreateEstablishment } from './dto/create.establishment.dto';
+import { CreateEstablishmentDTO } from './dto/create.establishment.dto';
 import { UpdateEstablish } from './dto/update.establishment.dto';
 import { Establishment } from './entities/establishment.entity';
 import { EstablishmentService } from './establishment.service';
@@ -10,7 +10,7 @@ export class EstablishmentController {
 
   @Post()
   async createEstablishment(
-    @Body() establishment: CreateEstablishment,
+    @Body() establishment: CreateEstablishmentDTO,
   ): Promise<Establishment> {
     return this.establishmentService.createEstablishment(establishment);
   }
