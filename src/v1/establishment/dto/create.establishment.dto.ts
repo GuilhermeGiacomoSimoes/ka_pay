@@ -1,8 +1,8 @@
-export class CreateEstablishment {
-  name: string;
-  street: string;
-  number: number;
-  cnpj: string;
-  city: string;
-  IE: number;
+export class CreateEstablishmentDTO {
+  readonly name: string;
+  readonly street: string;
+  readonly number: number;
+  readonly cnpj: string;
+  readonly city: string;
+  readonly IE: number;
 }
