@@ -27,7 +27,7 @@ export class EstablishmentController {
     return this.establishmentService.getEstablishment(id);
   }
 
-  @Get()
+  @Get('/getAll')
   async getAllEstablishment(): Promise<Establishment[]> {
     return this.establishmentService.getAllEstablishment();
   }
