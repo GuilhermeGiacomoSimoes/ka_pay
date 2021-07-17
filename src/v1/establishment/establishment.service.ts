@@ -33,11 +33,7 @@ export class EstablishmentService {
   }
 
   async getEstablishment(id: string): Promise<Establishment> {
-    try {
-      return await this.establishmentRepository.findById(id);
-    } catch (err) {
-      throw err;
-    }
+    return await this.establishmentRepository.findById(id);
   }
 
   async getAllEstablishment(): Promise<Establishment[]> {
