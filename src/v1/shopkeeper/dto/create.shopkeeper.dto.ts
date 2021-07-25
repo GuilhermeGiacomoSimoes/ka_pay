@@ -1,4 +1,4 @@
-export class CreateShopkeeper {
+export class CreateShopkeeperDTO {
   name: string;
   email: string;
   document: string;

@@ -16,6 +16,7 @@ describe('ShopkeeperService', () => {
     const ShopKeeperRepositoryStub = {
       getShopKeeper: jest.fn(),
       createShopKeeper: jest.fn(),
+      updateShopKeeper: jest.fn(),
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -80,19 +81,19 @@ describe('ShopkeeperService', () => {
       );
     });
 
-    it('Should not throw if repository returns', async() => {
-      await expect(service.createShopKeeper(mockData)).resolves.not.toThrow()
-    })
+    it('Should not throw if repository returns', async () => {
+      await expect(service.createShopKeeper(mockData)).resolves.not.toThrow();
+    });
 
-    it('Should be called with correct params', async() => {
-      await service.createShopKeeper(mockData)
-      expect(repository.createShopKeeper).toBeCalledWith(mockData)
-    })
+    it('Should be called with service correct params', async () => {
+      await service.createShopKeeper(mockData);
+      expect(repository.createShopKeeper).toBeCalledWith(mockData);
+    });
 
-    it('Should be called with corret params', async() => {
-      (repository.createShopKeeper as jest.Mock).mockReturnValueOnce(mockData)
-      expect(await service.createShopKeeper(mockData)).toEqual(mockData)
-    })
+    it('Should return when repository returns', async () => {
+      (repository.createShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      expect(await service.createShopKeeper(mockData)).toEqual(mockData);
+    });
 
     it('Should throw if name length is greater than 20 characters', async () => {
       mockData.name = 'Teste de nome maior que 20 caracteres';
@@ -101,6 +102,47 @@ describe('ShopkeeperService', () => {
           'The name must have a maximum of 20 characters',
         ),
       );
+    });
+  });
+
+  describe('updateShopKeeper', () => {
+    it('Should throw if repository throws', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockRejectedValueOnce(
+        new InternalServerErrorException(),
+      );
+      await expect(service.updateShopKeeper(mockData)).rejects.toThrow(
+        new InternalServerErrorException(),
+      );
+    });
+
+    it('Should not throw if repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      await expect(service.updateShopKeeper(mockData)).resolves.not.toThrow();
+    });
+
+    it('Should be called with service correct params', async () => {
+      await service.updateShopKeeper(mockData);
+      expect(repository.updateShopKeeper).toBeCalledWith(mockData);
+    });
+
+    it('Should return when repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      expect(await service.updateShopKeeper(mockData)).toEqual(mockData);
+    });
+
+    it('Should throw if not called with correct params', async () => {
+      await service.updateShopKeeper(mockData);
+      expect(repository.updateShopKeeper).toBeCalledWith(mockData);
+    });
+    it('Should return when repository returns', async () => {
+      (repository.updateShopKeeper as jest.Mock).mockReturnValueOnce(mockData);
+      expect(await service.updateShopKeeper(mockData)).toEqual(mockData);
+    });
+  });
+
+  describe('deleteShopKeeper', () => {
+    it('Should throw if repository throws', async () => {
+      
     });
   });
 });
