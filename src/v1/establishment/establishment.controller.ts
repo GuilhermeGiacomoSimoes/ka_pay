@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { CreateEstablishmentDTO } from './dto/create.establishment.dto';
 import { UpdateEstablish } from './dto/update.establishment.dto';
 import { Establishment } from './entities/establishment.entity';
