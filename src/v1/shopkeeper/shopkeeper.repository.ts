@@ -1,4 +1,3 @@
-import { InternalServerErrorException } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateShopkeeperDTO } from './dto/create.shopkeeper.dto';
 import { UpdateShopkeeperDTO } from './dto/update.shopkeeper.dto';
