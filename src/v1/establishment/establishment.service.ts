@@ -20,28 +20,43 @@ export class EstablishmentService {
         establishment,
       );
     } catch (err) {
-      console.log(err);
-      return null;
+      throw new InternalServerErrorException();
     }
   }
 
   async updateEstablishment(
     establishment: UpdateEstablish,
   ): Promise<Establishment> {
-    return await this.establishmentRepository.updateEstablishment(
-      establishment,
-    );
+    try {
+      return await this.establishmentRepository.updateEstablishment(
+        establishment,
+      );
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 
   async getEstablishment(id: string): Promise<Establishment> {
-    return await this.establishmentRepository.findById(id);
+    try {
+      return await this.establishmentRepository.findById(id);
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 
   async getAllEstablishment(): Promise<Establishment[]> {
-    return await this.establishmentRepository.findAll();
+    try {
+      return await this.establishmentRepository.findAll();
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 
   async removeEstablishment(id: string): Promise<any> {
-    return await this.establishmentRepository.removeEstablishment(id);
+    try {
+      return await this.establishmentRepository.removeEstablishment(id);
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 }
