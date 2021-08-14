@@ -1,14 +1,15 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Establishment } from './entities/establishment.entity';
 import { UpdateEstablish } from './dto/update.establishment.dto';
 import { CreateEstablishmentDTO } from './dto/create.establishment.dto';
 import { EstablishmentRepository } from './establishment.repository';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class EstablishmentService {
   constructor(
-    @Inject('EstablishmentRepositoryProvider')
-    private readonly establishmentRepository: EstablishmentRepository,
+    @InjectRepository(EstablishmentRepository)
+    private establishmentRepository: EstablishmentRepository,
   ) {}
 
   async createEstablishment(
