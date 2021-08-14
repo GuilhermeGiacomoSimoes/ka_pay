@@ -30,7 +30,7 @@ export class EstablishmentController {
     return this.establishmentService.updateEstablishment(establishment);
   }
 
-  @Get()
+  @Get(':id')
   async getEstablishment(@Param('id') id: string): Promise<Establishment> {
     return this.establishmentService.getEstablishment(id);
   }
