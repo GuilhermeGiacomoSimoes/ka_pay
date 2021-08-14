@@ -39,4 +39,9 @@ export class EstablishmentController {
   async getAllEstablishment(): Promise<Establishment[]> {
     return this.establishmentService.getAllEstablishment();
   }
+
+  @Delete(':id')
+  async removeEstablishment(@Param('id') id: string): Promise<Object> {
+    return this.establishmentService.removeEstablishment(id);
+  }
 }
