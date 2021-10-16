@@ -1,4 +1,4 @@
-export class Client {
+export class CreateClientDTO {
   uuid: string;
   name: string;
   birthDate: number;
