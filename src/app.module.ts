@@ -4,6 +4,8 @@ import { TerminusModule } from '@nestjs/terminus';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configMySQLDocker } from 'ormconfig';
 import { EstablishmentModule } from './v1/establishment/establishment.module';
+import { ClientController } from './client/client.controller';
+import { ClientService } from './v1/client/client.service';
 
 @Module({
   imports: [
@@ -12,7 +14,7 @@ import { EstablishmentModule } from './v1/establishment/establishment.module';
     TypeOrmModule.forRoot(configMySQLDocker),
     EstablishmentModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [ClientController],
+  providers: [ClientService],
 })
 export class AppModule {}
