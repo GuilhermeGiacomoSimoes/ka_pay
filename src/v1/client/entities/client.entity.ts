@@ -11,8 +11,8 @@ export class Client {
   @Column('int')
   birthDate: number;
 
-  @Column('int')
-  cpfCnpj: number;
+  @Column({ length: 14 })
+  cpfCnpj: string;
 
   @Column({ length: 70 })
   addressStreet: string;

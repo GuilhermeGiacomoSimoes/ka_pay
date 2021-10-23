@@ -2,7 +2,7 @@ export class CreateClientDTO {
   uuid: string;
   name: string;
   birthDate: number;
-  cpfCnpj: number;
+  cpfCnpj: string;
   addressStreet: string;
   addressNumber: number;
   addressNeighborhood: string;
