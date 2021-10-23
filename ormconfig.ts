@@ -1,3 +1,4 @@
+import { Client } from 'src/v1/client/entities/client.entity';
 import { Establishment } from 'src/v1/establishment/entities/establishment.entity';
 import { ShopKeeper } from 'src/v1/shopkeeper/entities/shopkeeper.entity';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
@@ -9,7 +10,7 @@ export const configMySqlLocal: MysqlConnectionOptions = {
   username: 'root',
   password: '',
   database: 'ka_pay',
-  entities: [Establishment, ShopKeeper],
+  entities: [Establishment, ShopKeeper, Client],
   migrations: ['src/v1/migrations/*.migration.ts'],
   cli: {
     migrationsDir: 'src/v1/migrations',
@@ -26,7 +27,7 @@ export const configMySQLDocker: MysqlConnectionOptions = {
   password: 'root',
   database: 'ka_pay',
   synchronize: true,
-  entities: [Establishment, ShopKeeper],
+  entities: [Establishment, ShopKeeper, Client],
   migrations: ['./src/v1/migrations/*.migration.ts'],
   cli: {
     migrationsDir: './src/v1/migrations',
