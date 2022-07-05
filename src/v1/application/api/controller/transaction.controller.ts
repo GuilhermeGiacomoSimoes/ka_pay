@@ -4,7 +4,7 @@ import {Controller, Get} from "@nestjs/common";
 export default class TransactionController {
 
 	@Get()
-	listTransations() : Promise<void | never> {
+	listTransations() : Promise<void> | never{
 
 	}
 }
