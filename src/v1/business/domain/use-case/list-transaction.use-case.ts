@@ -1,4 +1,5 @@
-import {Transaction} from "../entities/transaction.entity";
+import {Inject} from "@nestjs/common";
+import {TransactionResponse} from "src/v1/application/api/request/Transaction.response";
 
 export class ListTransactionUseCase {
 
@@ -6,7 +7,7 @@ export class ListTransactionUseCase {
 		private readonly 
 	) {}
 
-	execute() : Promise<Transaction> {
-		return 	;
+	execute() : Promise<TransactionResponse> {
+		return this.listTransactionUseCase.execute();
 	}
 }

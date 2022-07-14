@@ -1,6 +1,6 @@
 import {Controller, Get, Inject} from "@nestjs/common";
-import {Transaction} from "src/v1/business/domain/entities/transaction.entity";
 import {ListTransactionUseCase} from "src/v1/business/domain/use-case/list-transaction.use-case";
+import {TransactionResponse} from "../request/Transaction.response";
 
 @Controller('transaction')
 export default class TransactionController {
@@ -11,7 +11,7 @@ export default class TransactionController {
 	) {}
 
 	@Get()
-	async listTransations() : Promise<Transaction> | never {
+	async listTransations() : Promise<TransactionResponse> {
 		return this.listTransationsUseCases.execute();
 	}
 }
