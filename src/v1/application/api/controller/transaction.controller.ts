@@ -1,4 +1,4 @@
-import {Controller, Get} from "@nestjs/common";
+import {Controller, Get, Inject} from "@nestjs/common";
 import {Transaction} from "src/v1/business/domain/entities/transaction.entity";
 import {ListTransactionUseCase} from "src/v1/business/domain/use-case/list-transaction.use-case";
 
@@ -6,6 +6,7 @@ import {ListTransactionUseCase} from "src/v1/business/domain/use-case/list-trans
 export default class TransactionController {
 
 	constructor(
+		@Inject()
 		private readonly listTransationsUseCases : ListTransactionUseCase,	
 	) {}
 
