@@ -1,4 +1,5 @@
 import {TransactionResponse} from "src/v1/business/common/Transaction.response";
+import {TransactionTypeormAdapterRepository} from "src/v1/infrastructure/adapter/typeorm-adapters/transaction.typeorm.adapter.repository";
 import {DataSource, Repository} from "typeorm";
 import {TransactionTypeORMEntity} from "../entity/transaction-typeorm-entity";
 import {ITransactionTypeormRepository} from "./transaction-typeorm.repository.interface";
@@ -11,8 +12,10 @@ export default class TransactionTypeORMRepository implements ITransactionTypeorm
 		this.ormRepository = dataSource.getRepository(TransactionTypeORMEntity);
 	}
 
-	listTransactions(): Promise<TransactionResponse[]> {
-		const transactionsTypeorm : TransactionTypeORMEntity[] = this.ormRepository.find();
+	async listTransactions(): Promise<TransactionResponse[]> {
+		const transactionsTypeorm : TransactionTypeORMEntity[] = await this.ormRepository.find();
+		const transactionAdapter = new TransactionTypeormAdapterRepository();
+		let transactions = transactionAdapter.listTransactionsAdapter(transactionsTypeorm);
 		return  transactions;
 	}
 }
