@@ -1,4 +1,4 @@
-export interface CLientResponse {
+export class CLientResponse {
 	name : string;
 	email : string;
 	birthDate : string;
