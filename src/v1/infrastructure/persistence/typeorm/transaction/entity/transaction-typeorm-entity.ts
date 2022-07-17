@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryColumn} from "typeorm";
+import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
+import {ClientTypeORMEntity} from "../../client/client-typeorm-entity";
 
 @Entity('ka_transaction')
 export class TransactionTypeORMEntity {
@@ -9,8 +10,12 @@ export class TransactionTypeORMEntity {
 	valueTransaction : number;
 
 	@Column({ name : 'client_destination' })
-	clientDestination : string;
+	@OneToOne(type => ClientTypeORMEntity) 
+	@JoinColumn()
+	clientDestination : ClientTypeORMEntity;
 
-	@Column({ name : 'client_origin' })
-	clientOrigin : string;
+	@Column({ name : 'client_origin' }) 
+	@OneToOne(type => ClientTypeORMEntity)
+	@JoinColumn()
+	clientOrigin : ClientTypeORMEntity;
 }
