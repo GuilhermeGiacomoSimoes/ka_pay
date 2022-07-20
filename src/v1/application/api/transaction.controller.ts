@@ -12,7 +12,7 @@ export default class TransactionController {
 	) {}
 
 	@Get()
-	async listTransations() : Promise<TransactionResponse> {
+	async listTransations() : Promise<TransactionResponse[]> {
 		return this.listTransationsUseCases.execute();
 	}
 }
