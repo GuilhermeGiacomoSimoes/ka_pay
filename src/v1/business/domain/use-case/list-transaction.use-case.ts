@@ -9,7 +9,8 @@ import {IListTransactionUseCase} from "./list-transactions.use-case.interface";
 export class ListTransactionUseCase implements IListTransactionUseCase{
 
 	constructor(
-		private readonly transactionRepository : IListTransactionRepository 
+		@InjectRepository(TransactionTypeORMRepository)
+		private readonly transactionRepository : ITransactionTypeormRepository 
 	) {}
 
 	execute() : Promise<TransactionResponse> {
