@@ -13,7 +13,7 @@ export class ListTransactionUseCase implements IListTransactionUseCase{
 		private readonly transactionRepository : ITransactionTypeormRepository 
 	) {}
 
-	execute() : Promise<TransactionResponse> {
-		return 
+	execute() : Promise<TransactionResponse[]> {
+		return this.transactionRepository.listTransactions(); 
 	}	
 }
