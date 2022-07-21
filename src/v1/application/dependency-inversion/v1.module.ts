@@ -1,11 +1,20 @@
 import {Module} from "@nestjs/common";
-import {ListTransactionUseCase} from "src/v1/business/domain/use-case/list-transaction.use-case";
-import TransactionController from "../api/transaction.controller";
+import {RouterModule} from "@nestjs/core";
 import {DatabaseModule} from "./database.module";
+import {TransactionModule} from "./transaction.module";
+
+const modules = [TransactionModule];
 
 @Module({
-	controllers: [TransactionController], 
-	providers: [ListTransactionUseCase], 
-	imports : [DatabaseModule]
+	imports : [
+		RouterModule.register([
+			{
+				path: 'v1',
+				children: modules 
+			}
+		]), 
+		DatabaseModule,
+		...modules
+	],
 })
 export class v1Module {}
