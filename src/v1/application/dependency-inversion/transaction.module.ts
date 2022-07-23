@@ -8,7 +8,7 @@ import {DatabaseModule} from "./database.module";
 	providers: [
 		{
 			provide: ListTransactionUseCase, 
-			useFactory(transactionRepository: ITransactionTypeormRepository) {
+			useFactory(transactionRepository: ITransactionRepository) {
 				return new ListTransactionUseCase(transactionRepository);
 			} 
 		}

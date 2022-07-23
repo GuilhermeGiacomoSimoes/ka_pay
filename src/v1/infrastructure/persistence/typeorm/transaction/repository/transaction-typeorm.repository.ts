@@ -6,7 +6,7 @@ import {DataSource, Repository} from "typeorm";
 import {TransactionTypeORMEntity} from "../entity/transaction-typeorm-entity";
 
 @Injectable()
-export default class TransactionTypeORMRepository implements ITransactionTypeormRepository {
+export default class TransactionTypeORMRepository implements ITransactionRepository {
 
 	private readonly ormRepository : Repository<TransactionTypeORMEntity>;
 
