@@ -12,13 +12,15 @@ import {DatabaseModule} from "./database.module";
 			provide: ListTransactionUseCase, 
 			useFactory(transactionRepository: ITransactionRepository) {
 				return new ListTransactionUseCase(transactionRepository);
-			} 
+			}, 
+			inject: [TransactionTypeORMRepository]
 		}, 
 		{
 			provide: TransactionTypeORMRepository,
 			useFactory(dataSource: DataSource) {
-
-			}
+				return new TransactionTypeORMRepository(dataSource);
+			}, 
+			inject: []
 		}
 	], 
 	imports: [DatabaseModule],
