@@ -1,18 +1,16 @@
-import {Inject, Injectable} from "@nestjs/common";
+import {Injectable} from "@nestjs/common";
 import TransactionTypeORMRepository from "src/v1/infrastructure/persistence/typeorm/transaction/repository/transaction-typeorm.repository";
 import {TransactionResponse} from "../common/Transaction.response";
-import {ITransactionRepository} from "../domain/transaction-typeorm.repository.interface";
-import {ITransactionUseCase} from "./transactions.use-case.interface";
+import {IListTransactionUseCase} from "./list-transactions.use-case.interface";
 
 @Injectable()
-export class ListTransactionUseCase implements ITransactionUseCase {
+export class ListTransactionUseCase implements IListTransactionUseCase {
 
 	constructor(
-		@Inject(TransactionTypeORMRepository)
-		private readonly transactionRepository : ITransactionRepository 
+		private readonly transactionRepository : TransactionTypeORMRepository 
 	) {}
 
 	execute() : Promise<TransactionResponse[]> {
 		return this.transactionRepository.listTransactions(); 
-	}	
+	}
 }
