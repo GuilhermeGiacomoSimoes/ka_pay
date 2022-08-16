@@ -1,8 +1,9 @@
+import {MySqlDataDourceToken} from "src/v1/application/dependency-inversion/typeorm.decorator";
 import {DataSource} from "typeorm";
 
 export const databaseProviders = [
 	{
-		provide : 'DATA_SOURCE',
+		provide : MySqlDataDourceToken,
 		useFactory : async () => {
 			const dataSource = new DataSource({
 				type: 'mysql',
