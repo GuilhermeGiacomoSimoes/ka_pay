@@ -11,14 +11,14 @@ import {ListTransactionUseCaseToken, MySqlDataDourceToken, TransactionRepository
 	providers: [
 		{
 			provide: ListTransactionUseCaseToken,
-			useFactory(transactionRepository: ITransactionRepository) {
+			useFactory: async (transactionRepository: ITransactionRepository) => {
 				return new ListTransactionUseCase(transactionRepository)	
 			},
 			inject: [TransactionRepositoryToken]
 		}, 
 		{
 			provide: TransactionRepositoryToken,
-			useFactory(dataSource: DataSource) {
+			useFactory: async (dataSource: DataSource) => {
 				return new TransactionTypeORMRepository(dataSource)	
 			},
 			inject: [MySqlDataDourceToken]
