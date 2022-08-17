@@ -13,7 +13,7 @@ export const databaseProviders = [
 				password: 'root',
 				database: 'ka_pay',
 				entities : [
-					__dirname + '/../**/*.entity{.ts,.js}'
+					__dirname + '/../../**/*-entity.{ts,js}'
 				], 
 				synchronize: false  
 			}); 
