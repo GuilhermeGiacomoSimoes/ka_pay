@@ -1,7 +1,7 @@
 import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
 import {ClientTypeORMEntity} from "../../client/client-typeorm-entity";
 
-@Entity('ka_transaction')
+@Entity('ka_transactions')
 export class TransactionTypeORMEntity {
 	@PrimaryColumn()
 	id : string;
