@@ -3,7 +3,7 @@ import {ClientTypeORMEntity} from "../../client/client-typeorm-entity";
 
 @Entity('ka_transactions')
 export class TransactionTypeORMEntity {
-	@PrimaryColumn()
+	@PrimaryColumn({name: 'id'})
 	id : string;
 
 	@Column({ name : 'value_transaction' })
