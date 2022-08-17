@@ -1,6 +1,5 @@
 import {Column, Entity, PrimaryColumn} from "typeorm";
 
-
 @Entity('ka_clients')
 export class ClientTypeORMEntity {
 	@PrimaryColumn()	

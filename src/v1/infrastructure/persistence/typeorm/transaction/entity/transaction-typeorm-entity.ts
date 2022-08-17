@@ -9,13 +9,13 @@ export class TransactionTypeORMEntity {
 	@Column({ name : 'value_transaction' })
 	valueTransaction : number;
 
-	@Column({ name : 'client_destination' })
-	@OneToOne(type => ClientTypeORMEntity) 
+	@Column({ name : 'id_client_destination' , type: 'varchar'})
+	@OneToOne(()  => ClientTypeORMEntity) 
 	@JoinColumn()
 	clientDestination : ClientTypeORMEntity;
 
-	@Column({ name : 'client_origin' }) 
-	@OneToOne(type => ClientTypeORMEntity)
+	@Column({ name : 'id_client_origin' , type: 'varchar'}) 
+	@OneToOne(()  => ClientTypeORMEntity)
 	@JoinColumn()
 	clientOrigin : ClientTypeORMEntity;
 }
