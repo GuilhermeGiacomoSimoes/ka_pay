@@ -1,5 +1,5 @@
 import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
-import {ClientTypeORMEntity} from "../../client/client-typeorm-entity";
+import {ClientTypeORMEntity} from "../../client/entity/client-typeorm-entity";
 
 @Entity('ka_transactions')
 export class TransactionTypeORMEntity {
