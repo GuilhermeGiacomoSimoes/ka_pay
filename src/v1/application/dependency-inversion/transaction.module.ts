@@ -5,7 +5,7 @@ import {TransactionTypeORMRepository} from "src/v1/infrastructure/persistence/ty
 import {DataSource} from "typeorm";
 import TransactionController from "../api/transaction.controller";
 import {DatabaseModule} from "./database.module";
-import {ListTransactionUseCaseToken, MySqlDataDourceToken, TransactionRepositoryToken} from "./typeorm.decorator";
+import {ListTransactionUseCaseToken, MySqlDataDourceToken, TransactionRepositoryToken} from "./tokens";
 
 @Module({
 	providers: [

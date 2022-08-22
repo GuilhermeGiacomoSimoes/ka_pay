@@ -1,7 +1,7 @@
 import {Controller, Get, Inject} from "@nestjs/common";
 import {TransactionResponse} from "src/v1/business/common/Transaction.response";
 import {IListTransactionUseCase} from "src/v1/business/use-case/list-transactions.use-case.interface";
-import { ListTransactionUseCaseToken } from "../dependency-inversion/typeorm.decorator";
+import { ListTransactionUseCaseToken } from "../dependency-inversion/tokens";
 
 @Controller('transaction')
 export default class TransactionController {

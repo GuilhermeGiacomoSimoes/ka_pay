@@ -1,4 +1,4 @@
-import {MySqlDataDourceToken} from "src/v1/application/dependency-inversion/typeorm.decorator";
+import {MySqlDataDourceToken} from "src/v1/application/dependency-inversion/tokens";
 import {DataSource} from "typeorm";
 
 export const databaseProviders = [
