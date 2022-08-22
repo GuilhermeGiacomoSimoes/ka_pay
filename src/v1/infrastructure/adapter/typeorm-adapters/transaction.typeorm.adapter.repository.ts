@@ -10,8 +10,8 @@ export class TransactionTypeormAdapterRepository {
 		for(let transactionTypeorm of transactionRepositoryTypeorm) {
 			let transactionResponse : TransactionResponse;
 
-			let clientDestinationResponse : CLientResponse;
-			let clientOriginResponse : CLientResponse;
+			let clientDestinationResponse = new CLientResponse();
+			let clientOriginResponse = new CLientResponse();
 
 			clientDestinationResponse.name = transactionTypeorm.clientDestination.name;
 			clientDestinationResponse.email = transactionTypeorm.clientDestination.email;
