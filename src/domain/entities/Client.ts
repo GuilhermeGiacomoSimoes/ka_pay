@@ -3,14 +3,12 @@ export class Client {
 	private _name: string;
 	private _birthDate: string;
 	private _cpfCnpj: string;
-	private _money: number;
 
-	constructor(id: string, name: string, birthDate: string, cpfCnpj: string, money: number) {
+	constructor(id: string, name: string, birthDate: string, cpfCnpj: string) {
 		this._id = id;
 		this._name = name;
 		this._birthDate = birthDate;
 		this._cpfCnpj = cpfCnpj;
-		this._money = money;
 	}
 
 	public get id() : string{
@@ -27,10 +25,6 @@ export class Client {
 	}
 	public get cpfCnpj() : string {
 		return this._cpfCnpj;
-		
-	}
-	public get money() : number {
-		return this._money;
 		
 	}
 }
