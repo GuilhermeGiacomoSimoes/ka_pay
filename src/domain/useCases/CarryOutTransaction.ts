@@ -10,7 +10,9 @@ export class CarryOutTransaction {
 		this.accountRepository =  accountRepository;
 	}
 
-	execute(value: number, accountorigin: string, accountDestination: string) {
+	execute(value: number, accountOriginUUID: string, accountDestinationUUID: string) {
+		const accountOrigin = this.accountRepository.getAccountById(accountDestinationUUID);
+		const accountDestination = this.accountRepository.getAccountById(accountOriginUUID);
 
 	}
 }

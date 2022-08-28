@@ -6,7 +6,7 @@ export class TransactionRepositoryMemory implements TransactionRepositoryInterfa
 	private transactions : Transaction[] = [];
 
 	listTransactions(): Promise<Transaction[]> {
-		return Promise.resolve(this.transactions);	
+		return Promise.resolve(this.transactions);
 	}	
 
 	getTransactionById(uuid: string): Promise<Transaction | undefined> {
