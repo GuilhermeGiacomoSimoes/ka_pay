@@ -35,6 +35,8 @@ describe('carry out transaction', () => {
 	const invalidValues = [
 		{value: 5001, accountDestination: 'uuidAccount1', accountOrigin: 'uuidAccount2'},
 		{value: 1001, accountDestination: 'uuidAccount2', accountOrigin: 'uuidAccount1'},
+		{value: 1000, accountDestination: 'uuidAccount3', accountOrigin: 'uuidAccount1'},
+		{value: 100, accountDestination: 'uuidAccount2', accountOrigin: 'uuidAccount3'},
 	];
 	test.each(invalidValues)(
 		'should throw if  we pass an amount freater than the source account balance ($value)', 
