@@ -25,7 +25,7 @@ export class TransactionRepositoryMemory implements TransactionRepositoryInterfa
 	update(transaction: Transaction) {
 		const indexTransactionUpdate = this.returnIndexOfTransactionInArrayMemoryByUuid(transaction.id);
 		if(indexTransactionUpdate == -1) {
-			return;
+			throw new Error(`transaction ${transaction.id} not found to update`);
 		}
 
 		this.transactions.splice(indexTransactionUpdate, 1);
