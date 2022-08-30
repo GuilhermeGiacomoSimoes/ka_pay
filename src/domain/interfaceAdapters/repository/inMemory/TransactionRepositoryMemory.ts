@@ -7,13 +7,14 @@ export class TransactionRepositoryMemory implements TransactionRepositoryInterfa
 
 	listTransactions(): Promise<Transaction[]> {
 		return Promise.resolve(this.transactions);
-	}	
+	}
 
 	getTransactionById(uuid: string): Promise<Transaction | undefined> {
 		const transaction : Transaction | undefined = 
-			this.transactions.find((transactiom) => {
-				    return transactiom.id == uuid;
+			this.transactions.find((transaction) => {
+				    return transaction.id == uuid;
 			}); 
+
 		return Promise.resolve(transaction);
 	}
 
