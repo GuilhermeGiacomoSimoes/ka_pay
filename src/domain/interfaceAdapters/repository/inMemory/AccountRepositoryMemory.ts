@@ -11,8 +11,8 @@ export class AccountRepositoryMemory implements AccountRepositoryInterface {
 
 	getAccountById(uuid: string): Promise<Account | undefined> {
 		const account : Account | undefined = 
-			this.accounts.find((transactiom) => {
-				    return transactiom.id == uuid;
+			this.accounts.find((account) => {
+				    return account.id == uuid;
 			}); 
 		return Promise.resolve(account);
 	}
