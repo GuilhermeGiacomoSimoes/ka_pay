@@ -5,11 +5,11 @@ export class AccountRepositoryMemory implements AccountRepositoryInterface {
 	
 	private accounts : Account[] = [];
 
-	listAccounts(): Promise<Account[]> {
+	async listAccounts(): Promise<Account[]> {
 		return Promise.resolve(this.accounts);	
 	}	
 
-	getAccountById(uuid: string): Promise<Account | undefined> {
+	async getAccountById(uuid: string): Promise<Account | undefined> {
 		const account : Account | undefined = 
 			this.accounts.find((account) => {
 				    return account.id == uuid;
@@ -17,11 +17,11 @@ export class AccountRepositoryMemory implements AccountRepositoryInterface {
 		return Promise.resolve(account);
 	}
 
-	save(account: Account) {
+	async save(account: Account) {
 		this.accounts.push(account);
 	}
 
-	update(account: Account) {
+	async update(account: Account) {
 		const indexAccountUpdate = this.returnIndexOfAccountInArrayMemoryByUuid(account.id);
 		if(indexAccountUpdate == -1) {
 			return;
