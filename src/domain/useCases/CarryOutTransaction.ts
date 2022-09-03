@@ -13,8 +13,7 @@ export class CarryOutTransaction {
 	}
 
 	async execute(value: number, accountOriginUUID: string, accountDestinationUUID: string) {
-
-		if(value < 0 || value == null || value == undefined) {
+		if(value < 0) {
 			throw new Error("Value is not valid");
 		}
 
@@ -22,9 +21,6 @@ export class CarryOutTransaction {
 		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
 
 		if(accountOriginDatabase == undefined || accountDestinationDatabase == undefined) {
-			console.log("morreu: " + accountDestinationUUID);
-			console.log("morreu: " + accountOriginUUID);
-
 			throw new Error("not find account");
 		}
 

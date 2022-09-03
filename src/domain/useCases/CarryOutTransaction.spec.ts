@@ -20,7 +20,7 @@ describe('carry out transaction', () => {
 		accountRepository.save(account2);
 
 		carryOutTransaction = new CarryOutTransaction(transactionRepository, accountRepository);
-	}); 
+	});
 
 	const validValues = [
 		{value: 100, accountDestination: 'uuidAccount2', accountOrigin: 'uuidAccount1'},
