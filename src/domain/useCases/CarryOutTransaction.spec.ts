@@ -29,7 +29,9 @@ describe('carry out transaction', () => {
 	test.each(validValues)(
 		'should complete the transaction without any problmes if carry out transaction with value $value from $accountOrigin to $accountDestination', 
 		async ({value, accountDestination, accountOrigin}) => {
-		expect(carryOutTransaction.execute(value, accountOrigin, accountDestination)).not.toThrow();
+			await carryOutTransaction.execute(value, accountOrigin, accountDestination).then(response => {
+				expect(response).resolves.not.toThrow();
+			});
 	});
 
 	const invalidValues = [
@@ -41,11 +43,16 @@ describe('carry out transaction', () => {
 	test.each(invalidValues)(
 		'should throw if  we pass an amount freater than the source account balance ($value)', 
 		async ({value, accountDestination, accountOrigin}) => {
-		expect(carryOutTransaction.execute(value, accountOrigin, accountDestination)).toThrow();
+			await carryOutTransaction.execute(value, accountOrigin, accountDestination).then( response => {
+				expect(response).rejects.toThrow();
+			});
 	});
 
 	test('should throw if pass a negative value', async () => {
-		expect(carryOutTransaction.execute(-10, 'uuidAccount2', 'uuidAccount1')).toThrow();
+		await carryOutTransaction.execute(-10, 'uuidAccount2', 'uuidAccount1').then( response => {
+			expect(response).rejects.toThrow();
+		});
+		
 	});
 
 	const expectValues = [
@@ -56,12 +63,15 @@ describe('carry out transaction', () => {
 	test.each(expectValues)(
 		'should withdraw the money from the original account and credit the destination account', 
 		async ({value, uuidAccountDestination, uuidAccountOrigin, expectMoneyDestination, expectMoneyOrigin}) => {
-		carryOutTransaction.execute(value, uuidAccountOrigin, uuidAccountDestination);
 
-		const accountDestination = await accountRepository.getAccountById(uuidAccountDestination); 
-		const accountOrigin = await accountRepository.getAccountById(uuidAccountOrigin); 
+			await carryOutTransaction.execute(value, uuidAccountOrigin, uuidAccountDestination).then( async _ => {
+				const accountDestination = await accountRepository.getAccountById(uuidAccountDestination); 
+				const accountOrigin = await accountRepository.getAccountById(uuidAccountOrigin); 
 
-		expect(accountDestination?.money).toBe(expectMoneyDestination);
-		expect(accountOrigin?.money).toBe(expectMoneyOrigin);
+				expect(accountDestination?.money).toBe(expectMoneyDestination);
+				expect(accountOrigin?.money).toBe(expectMoneyOrigin);
+			});
+		
+
 	});
 });
