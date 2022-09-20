@@ -41,15 +41,11 @@ describe('carry out transaction', () => {
 	test.each(invalidValues)(
 		'should throw if  we pass an amount freater than the source account balance ($value)', 
 		async ({value, accountDestination, accountOrigin}) => {
-			await carryOutTransaction.execute(value, accountOrigin, accountDestination).then( response => {
-				expect(response).resolves.toThrow();
-			});
+			expect(carryOutTransaction.execute(value, accountOrigin, accountDestination)).rejects.toThrow();
 	});
 
 	test('should throw if pass a negative value', async () => {
-		await carryOutTransaction.execute(-10, 'uuidAccount2', 'uuidAccount1').then( response => {
-			expect(response).resolves.toThrow();
-		});
+		expect(carryOutTransaction.execute(-10, 'uuidAccount2', 'uuidAccount1')).rejects.toThrow();
 	});
 
 	const expectValues = [
