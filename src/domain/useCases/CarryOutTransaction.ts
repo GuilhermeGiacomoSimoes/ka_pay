@@ -21,7 +21,11 @@ export class CarryOutTransaction {
 		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountDestinationUUID);
 
 		if(accountOriginDatabase == undefined || accountDestinationDatabase == undefined) {
-			throw new Error("not find account");
+			throw new Error("Not find account");
+		}
+
+		if(accountOriginDatabase.money - value < 0) {
+			throw new Error("Value is greater than the balance");
 		}
 
 		const accountOrigin = new Account(
