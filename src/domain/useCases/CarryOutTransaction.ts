@@ -17,8 +17,8 @@ export class CarryOutTransaction {
 			throw new Error("Value is not valid");
 		}
 
-		const accountOriginDatabase = await this.accountRepository.getAccountById(accountDestinationUUID);
-		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
+		const accountOriginDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
+		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountDestinationUUID);
 
 		if(accountOriginDatabase == undefined || accountDestinationDatabase == undefined) {
 			throw new Error("not find account");
