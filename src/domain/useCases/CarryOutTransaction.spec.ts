@@ -50,12 +50,13 @@ describe('carry out transaction', () => {
 
 	const expectValues = [
 		{value: 100, uuidAccountDestination: 'uuidAccount2', uuidAccountOrigin: 'uuidAccount1', expectMoneyDestination: 5100, expectMoneyOrigin: 900},
-		{value: 5000, uuidAccountDestination: 'uuidAccount1', uuidAccountOrigin: 'uuidAccount2', expectMoneyDestination: 0, expectMoneyOrigin: 6000},
+		{value: 5000, uuidAccountDestination: 'uuidAccount1', uuidAccountOrigin: 'uuidAccount2', expectMoneyDestination: 6000, expectMoneyOrigin: 0},
 		{value: 1000, uuidAccountDestination: 'uuidAccount2', uuidAccountOrigin: 'uuidAccount1', expectMoneyDestination: 6000, expectMoneyOrigin: 0},
 	];
 	test.each(expectValues)(
 	'should withdraw the money from the original account and credit the destination account ($expectMoneyDestination, $expectMoneyOrigin)', 
 	async ({value, uuidAccountDestination, uuidAccountOrigin, expectMoneyDestination, expectMoneyOrigin}) => {
+
 		await carryOutTransaction.execute(value, uuidAccountOrigin, uuidAccountDestination).then( async _ => {
 			const accountDestination = await accountRepository.getAccountById(uuidAccountDestination); 
 			const accountOrigin = await accountRepository.getAccountById(uuidAccountOrigin); 
