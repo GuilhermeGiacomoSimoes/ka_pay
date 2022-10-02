@@ -17,14 +17,15 @@ export class ClientRepositoryMemory implements ClientRepositoryInterface{
 		return Promise.resolve(client);
 	}
 
-	save(client: Client) {
+	save(client: Client): Promise<Client> {
 		this.clients.push(client);
+		return Promise.resolve(client);
 	}
 
-	update(client: Client) {
+	update(client: Client) : Promise<Client | undefined> {
 		const indexClientUpdate = this.returnIndexOfClientInArrayMemoryByUuid(client.id);
 		if(indexClientUpdate == -1) {
-			return;
+			return Promise.resolve(undefined);
 		}
 
 		this.clients.splice(indexClientUpdate, 1);
