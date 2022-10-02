@@ -1,7 +1,7 @@
 import {Client} from "../../../entities/Client";
 import {ClientRepositoryInterface} from "../ClientRepositoryInterface";
 
-export class ClientRepositoryMemory {
+export class ClientRepositoryMemory implements ClientRepositoryInterface{
 	
 	private clients : Client[] = [];
 
