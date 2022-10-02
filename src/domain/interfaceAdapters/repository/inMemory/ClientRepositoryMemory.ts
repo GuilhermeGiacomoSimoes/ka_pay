@@ -5,7 +5,7 @@ export class ClientRepositoryMemory implements ClientRepositoryInterface{
 	
 	private clients : Client[] = [];
 
-	listClients(): Promise<Client[]> {
+	getAll(): Promise<Client[]> {
 		return Promise.resolve(this.clients);	
 	}	
 
