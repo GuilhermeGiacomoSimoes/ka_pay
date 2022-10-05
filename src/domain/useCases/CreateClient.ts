@@ -8,8 +8,8 @@ export class CreateClient {
 	}
 
 	async execute(client: Client) {
-		const clientConsult = this.clientRepository.getClientById(client.id);
-		if(clientConsult == undefined) {
+		const clientConsult = await this.clientRepository.getClientById(client.id);
+		if(clientConsult != undefined) {
 			throw new Error("Duplicate key");
 		}
 		this.clientRepository.save(client);
