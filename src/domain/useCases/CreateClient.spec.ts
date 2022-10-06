@@ -1,15 +1,13 @@
 import {CreateClient} from "./CreateClient";
-import {ClientRepositoryInterface} from "../interfaceAdapters/repository/ClientRepositoryInterface";
 import {ClientRepositoryMemory} from "../interfaceAdapters/repository/inMemory/ClientRepositoryMemory";
 import {Client} from "../entities/Client";
 
 describe('Create Client Use Cases', () => {
 	
-	let repositoryClient : ClientRepositoryInterface; 
 	let createCliente : CreateClient;
 
 	beforeEach(() => {
-		repositoryClient = new ClientRepositoryMemory();
+		const repositoryClient = new ClientRepositoryMemory();
 		createCliente = new CreateClient(repositoryClient);
 	});
 
