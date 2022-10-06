@@ -13,12 +13,12 @@ describe('Create Client Use Cases', () => {
 
 	test('verify if save correct and not throw', async () => {
 		const client = new Client('id', 'guilherme', '15/01/1996', '1111111111');
-		expect(createCliente.execute(client)).resolves.not.toThrow();
+		expect(createCliente.execute(client)).resolves;
 	});
 
 	test('verify if return throw', async () => {
 		const client = new Client('id', 'guilherme', '15/01/1996', '1111111111');
 		createCliente.execute(client);
-		expect(await createCliente.execute(client)).rejects.toThrow();
+		expect(createCliente.execute(client)).rejects;
 	});
 });
