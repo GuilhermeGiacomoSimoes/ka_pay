@@ -28,11 +28,11 @@ describe('useCase - CreateAccount', () => {
 
 	test('create account throw if parse a client nonexistent', async () => {
 		const account = new Account('id', 'id_client_nonexistent', 'id_bank', 100);
-		expect(createAccount.execute(account)).resolves.not.toThrow();
+		expect(createAccount.execute(account)).rejects.toThrow();
 	});
 
 	test('create account throw if parse a bank nonexistent', async () => {
 		const account = new Account('id', 'id_client', 'id_bank_nonexistent', 100);
-		expect(createAccount.execute(account)).resolves.not.toThrow();
+		expect(createAccount.execute(account)).rejects.toThrow();
 	});
 });
