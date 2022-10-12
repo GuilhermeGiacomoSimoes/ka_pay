@@ -1,12 +1,24 @@
 import {Account} from "../entities/Account";
+import {Bank} from "../entities/Bank";
+import {Client} from "../entities/Client";
 import {AccountRepositoryMemory} from "../interfaceAdapters/repository/inMemory/AccountRepositoryMemory";
+import {BankRepositoryMemory} from "../interfaceAdapters/repository/inMemory/BankRepositoryMemory";
+import {ClientRepositoryMemory} from "../interfaceAdapters/repository/inMemory/ClientRepositoryMemory";
 import {CreateAccount} from "./CreateAccount";
 
 describe('useCase - CreateAccount', () => {
 	let createAccount : CreateAccount;
 	beforeEach(() => {
+		const clientRepository = new ClientRepositoryMemory();
+		const client = new Client('id_client', 'guilherme', '15/01/1996', '43398765478');
+		clientRepository.save(client);
+
+		const bankRepository = new BankRepositoryMemory();
+		const bank = new Bank('id_bank', 'itau');
+		bankRepository.save(bank);
+
 		const repository = new AccountRepositoryMemory();
-		createAccount = new CreateAccount(repository);
+		createAccount = new CreateAccount(repository, clientRepository, bankRepository);
 	});
 
 	test('create account not throw', async () => {
