@@ -1,14 +1,16 @@
 import {Bank} from "../../../entities/Bank";
+import {BankRepositoryInterface} from "../BankRepositoryInterface";
 
-export class BankRepositoryMemory {
+export class BankRepositoryMemory implements BankRepositoryInterface {
 	
 	private banks : Bank[] = [];
 
-	listBanks(): Promise<Bank[]> {
+	async getAll(): Promise<Bank[]> {
 		return Promise.resolve(this.banks);	
-	}	
+	}
 
-	getBankById(uuid: string): Promise<Bank | undefined> {
+
+	async getBankById(uuid: string): Promise<Bank | undefined> {
 		const bank : Bank | undefined = 
 			this.banks.find((transactiom) => {
 				    return transactiom.id == uuid;
@@ -16,14 +18,15 @@ export class BankRepositoryMemory {
 		return Promise.resolve(bank);
 	}
 
-	save(bank: Bank) {
+	async save(bank: Bank) : Promise<Bank | undefined>{
 		this.banks.push(bank);
+		return Promise.resolve(bank);
 	}
 
-	update(bank: Bank) {
+	update(bank: Bank) : Promise<Bank | undefined> {
 		const indexBankUpdate = this.returnIndexOfBankInArrayMemoryByUuid(bank.id);
 		if(indexBankUpdate == -1) {
-			return;
+			return Promise.resolve(undefined);
 		}
 
 		this.banks.splice(indexBankUpdate, 1);
