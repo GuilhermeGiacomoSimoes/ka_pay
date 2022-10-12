@@ -7,7 +7,7 @@ export class CreateClient {
 		this.clientRepository = clientRepository;
 	}
 
-	async execute(client: Client) {
+	async execute(client: Client)  {
 		const clientConsult = await this.clientRepository.getClientById(client.id);
 		if(clientConsult) {
 			throw new Error("Duplicate key");
