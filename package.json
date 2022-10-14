@@ -4,7 +4,8 @@
   "description": "the example of the clean architecture",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && jest ./dist"
+    "test": "tsc && jest ./dist",
+	"start": "tsc && node dist/driversAndFrameworks/index.js"
   },
   "repository": {
     "type": "git",
