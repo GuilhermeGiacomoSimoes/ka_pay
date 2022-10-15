@@ -6,7 +6,7 @@ import {CreateClient} from '../domain/useCases/CreateClient';
 
 const app: Express = express()
 
-app.put('/createClient', (req: Request, res: Response) => {
+app.put('/client', (req: Request, res: Response) => {
 	const repositoryClient = new ClientRepositoryMemory();
 	const createClientUseCase = new CreateClient(repositoryClient);
 	const client: Client = new Client('id', 'guilherme', '15/01/1996', '111222222333');
