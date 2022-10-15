@@ -1,15 +1,18 @@
 import {Client} from "../domain/entities/Client";
 import {ClientRepositoryInterface} from "../domain/interfaceAdapters/repository/ClientRepositoryInterface";
+import {ClientRepositoryMySQLAdapter} from "../domain/interfaceAdapters/repository/ClientRepositoryMySQLAdapter";
+import {ClientInterfaceMySQLDTO} from "./ClientMySQLDTO";
 import {execute} from "./mysqlconfig";
 
 export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 
-	save(client: Client) : Promise<Client> {
+	async save(client: Client) : Promise<Client> {
 		const query = `INSERT INTO ka_clients(name,birth_date,cpf_cnpj) VALUES (?,?,?);`;
-		execute(query,[client.name, client.birthDate, client.cpfCnpj]);
+		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query,[client.name, client.birthDate, client.cpfCnpj]);
+		return Promise.resolve(ClientRepositoryMySQLAdapter.execute(clientDTO));
 	}
 	
-	update(client: Client) : Promise<Client | undefined> {
+	async update(client: Client) : Promise<Client | undefined> {
 		const query = `
 		UPDATE FROM ka_clients 
 		SET 	
@@ -21,15 +24,17 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			id = ?
 		;`;
 
-		execute(query,[
+		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query,[
 			client.name,
 			client.birthDate,
 			client.cpfCnpj,
 			client.id
 		]);
+
+		return Promise.resolve(ClientRepositoryMySQLAdapter.execute(clientDTO));
 	}
 	
-	getClientById(uuid: string) : Promise<Client | undefined> {
+	async getClientById(uuid: string) : Promise<Client | undefined> {
 		const query = `
 		SELECT 
 			* 
@@ -39,10 +44,11 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			id = ?	
 		`;
 	
-		execute(query, [uuid]);
+		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query, [uuid]);
+		return Promise.resolve(ClientRepositoryMySQLAdapter.execute(clientDTO));
 	}
 	
-	getAll(): Promise<Client[]> {
+	async getAll(): Promise<Client[]> {
 		
 		const query = `
 		SELECT 
@@ -51,7 +57,14 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			ka_clients
 		`;
 
-		execute(query, []);
+		const clientDTO = await execute<ClientInterfaceMySQLDTO[]>(query, []);
+		const clients: Client[] = [];
+
+		for(let client of clientDTO) {
+			clients.push(ClientRepositoryMySQLAdapter.execute(client));
+		}
+
+		return Promise.resolve(clients);
 	}
 } 
 
