@@ -19,7 +19,6 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			name  = ?,
 			birth_date = ?,
 			cpf_cnpj = ?,
-		VALUES (?,?,?)
 		WHERE 
 			id = ?
 		;`;
