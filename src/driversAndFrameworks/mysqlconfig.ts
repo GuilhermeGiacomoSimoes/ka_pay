@@ -31,14 +31,14 @@ function end(): boolean {
 
 export const execute = <T>(query: string, params: string[] | Object): Promise<T> => {
 	if(init()) {
-		const q = 
+		const queryResult = 
 			connection.query(query, params, (err, result) => {
 				if(err) return Promise.reject(err);
 				else return Promise.resolve(result);
 			});
 
 		end();
-		return new Promise<T>((resolve, reject) => {q});
+		return new Promise<T>((resolve, reject) => {queryResult});
 	}
 
 	Promise.reject('Error when connect in database');
