@@ -1,39 +1,48 @@
-import {createPool, Pool} from "mysql";
 import {DATA_SOURCES} from "./var.config";
+import mysql from 'mysql';
+import {connect} from "http2";
 
 const dataSource = DATA_SOURCES.mySqlDataSource;
-let pool: Pool;
 
-export const init = () => {
-	try {
-		pool = createPool({
-			connectionLimit: dataSource.DB_CONNECTION_LIMIT,
-			host: dataSource.DB_HOST,
-      		user: dataSource.DB_USER,
-      		password: dataSource.DB_PASSWORD,
-      		database: dataSource.DB_DATABASE,
-		});
+var connection = mysql.createConnection({
+	host: dataSource.DB_HOST,
+	user: dataSource.DB_USER,
+	password: dataSource.DB_PASSWORD,
+	database: dataSource.DB_DATABASE
+});
 
-		console.debug('mysql adapter pull generator');
-	} catch(error) {
-		console.error('mysql connection failt: ' + error);
-		throw new Error('fail to initialize pool')
-	}
+
+function init() : boolean {
+	connection.connect(err => {
+		if(err) throw new Error(`error: ${err}`);
+		console.log('connect in database');
+	});
+	
+	return true;
+}
+
+function end(): boolean {
+	connection.end(err => {
+		if(err) throw new Error(`error: ${err}`);
+		console.log('end database');
+	});
+
+	return true;
 }
 
 export const execute = <T>(query: string, params: string[] | Object): Promise<T> => {
-  try {
-    if (!pool) throw new Error('Pool was not created. Ensure pool is created when running the app.');
+	if(init()) {
+		const q = 
+			connection.query(query, params, (err, result) => {
+				if(err) return Promise.reject(err);
+				else return Promise.resolve(result);
+			});
 
-    return new Promise<T>((resolve, reject) => {
-      pool.query(query, params, (error, results) => {
-        if (error) reject(error);
-        else resolve(results);
-      });
-    });
+		end();
+		return new Promise<T>((resolve, reject) => {q});
+	}
 
-  } catch (error) {
-    console.error('[mysql.connector][execute][Error]: ', error);
-    throw new Error('failed to execute MySQL query');
-  }
+	Promise.reject('Error when connect in database');
 }
+
+
