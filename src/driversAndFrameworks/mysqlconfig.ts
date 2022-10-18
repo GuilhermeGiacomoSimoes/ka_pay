@@ -1,6 +1,5 @@
 import {DATA_SOURCES} from "./var.config";
 import mysql from 'mysql';
-import {connect} from "http2";
 
 const dataSource = DATA_SOURCES.mySqlDataSource;
 
