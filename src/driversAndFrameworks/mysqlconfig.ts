@@ -28,7 +28,7 @@ function end(): boolean {
 	return true;
 }
 
-export const execute = <T>(query: string, params: string[] | Object): Promise<T> => {
+export const execute = async <T>(query: string, params: string[] | Object) => {
 	if(init()) {
 		const queryResult = 
 			connection.query(query, params, (err, result) => {
