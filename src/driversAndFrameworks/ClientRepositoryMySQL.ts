@@ -59,8 +59,11 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 		const clientDTO = await execute<ClientInterfaceMySQLDTO[]>(query, []);
 		const clients: Client[] = [];
 
-		for(let client of clientDTO) {
-			clients.push(ClientRepositoryMySQLAdapter.execute(client));
+		if(clientDTO) {
+			for(let client of clientDTO) {
+				const clientAdapter = ClientRepositoryMySQLAdapter.execute(client);
+				if(clientAdapter) clients.push();
+			}
 		}
 
 		return Promise.resolve(clients);
