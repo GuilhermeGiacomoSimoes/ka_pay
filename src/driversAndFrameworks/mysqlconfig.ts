@@ -3,13 +3,12 @@ import mysql from 'mysql';
 
 const dataSource = DATA_SOURCES.mySqlDataSource;
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
 	host: dataSource.DB_HOST,
 	user: dataSource.DB_USER,
 	password: dataSource.DB_PASSWORD,
 	database: dataSource.DB_DATABASE
 });
-
 
 function init() : boolean {
 	connection.connect(err => {
