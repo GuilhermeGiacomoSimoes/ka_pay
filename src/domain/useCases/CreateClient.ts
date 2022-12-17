@@ -7,11 +7,11 @@ export class CreateClient {
 		this.clientRepository = clientRepository;
 	}
 
-	async execute(client: Client)  {
+	async execute(client: Client) : Promise<Client | null> {
 		const clientConsult = await this.clientRepository.getClientById(client.id);
 		if(clientConsult) {
 			throw new Error("Duplicate key");
 		}
-		this.clientRepository.save(client);
+		return Promise.resolve(this.clientRepository.save(client));
 	}
 }
