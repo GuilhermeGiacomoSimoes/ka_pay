@@ -10,15 +10,17 @@ const app: Express = express();
 
 const port = 8080;
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/client', async (req: Request, res: Response) => {
 	res.send('Express + TypeScript server');
 });
 
-app.put('/client', (req: Request, res: Response) => {
+app.put('/client', async (req: Request, res: Response) => {
 	const repositoryClient = new ClientRepositoryMySQL();
 	const createClientUseCase = new CreateClient(repositoryClient);
 	const client: Client = new Client('id', 'guilherme', '15/01/1996', '111222222333');
-	createClientUseCase.execute(client);
+	const clientCreated = await createClientUseCase.execute(client);
+	console.log('chegamos aqui 4: ' + clientCreated?.name);
+	res.send(clientCreated);
 });
 
 app.listen(port, () => {
