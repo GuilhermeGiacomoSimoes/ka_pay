@@ -32,9 +32,7 @@ export const execute = async <T>(query: string, params: string[] | Object) => {
 	if(init()) {
 		const queryResult = 
 			connection.query(query, params, (err, result) => {
-				end();
-				if(err) return Promise.reject(err);
-				return Promise.resolve(result);
+				return err ? Promise.reject(err) : Promise.resolve(result);
 			});
 
 		end();
