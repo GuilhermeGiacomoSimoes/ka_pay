@@ -35,11 +35,10 @@ export const execute = async <T>(query: string, params: string[] | Object) => {
 				return err ? Promise.reject(err) : Promise.resolve(result);
 			});
 
+		console.log(queryResult);
 		end();
 		return new Promise<T>((resolve, reject) => {queryResult});
 	}
 
-	Promise.reject('Error when connect in database');
+	return Promise.reject('Error when connect in database');
 }
-
-
