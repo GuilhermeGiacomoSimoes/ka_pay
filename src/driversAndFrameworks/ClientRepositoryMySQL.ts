@@ -16,7 +16,7 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 		const query = `
 		UPDATE FROM ka_clients 
 		SET 	
-			name  = ?,
+			name = ?,
 			birth_date = ?,
 			cpf_cnpj = ?,
 		WHERE 
