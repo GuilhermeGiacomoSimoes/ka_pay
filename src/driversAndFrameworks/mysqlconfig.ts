@@ -13,7 +13,6 @@ const connection = mysql.createConnection({
 function init() : boolean {
 	connection.connect(err => {
 		if(err) throw new Error(`Open DB: ${err}`);
-		console.log('connect in database');
 	});
 	
 	return true;
@@ -22,7 +21,6 @@ function init() : boolean {
 function end(): boolean {
 	connection.end(err => {
 		if(err) throw new Error(`End DB: ${err}`);
-		console.log('end database');
 	});
 
 	return true;
