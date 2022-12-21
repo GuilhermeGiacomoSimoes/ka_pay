@@ -44,7 +44,7 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 		`;
 	
 		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query, [uuid]);
-		return Promise.resolve(ClientRepositoryMySQLAdapter.execute(clientDTO));
+		return ClientRepositoryMySQLAdapter.execute(clientDTO);
 	}
 	
 	async getAll(): Promise<Client[]> {
