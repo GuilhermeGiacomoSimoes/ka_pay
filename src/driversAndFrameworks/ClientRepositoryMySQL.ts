@@ -2,7 +2,7 @@ import {Client} from "../domain/entities/Client";
 import {ClientRepositoryInterface} from "../domain/interfaceAdapters/repository/ClientRepositoryInterface";
 import {ClientRepositoryMySQLAdapter} from "../domain/interfaceAdapters/repository/ClientRepositoryMySQLAdapter";
 import {ClientInterfaceMySQLDTO} from "./ClientMySQLDTO";
-import { execute } from "./MySQLConfig";
+import {execute} from "./MySQLConfig";
 
 export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 
