@@ -13,18 +13,14 @@ export class Client {
 
 	public get id() : string{
 		return this._id; 
-		
 	}
 	public get name() : string {
 		return this._name;
-		
 	}
 	public get birthDate() : string {
 		return this._birthDate;
-		
 	}
 	public get cpfCnpj() : string {
 		return this._cpfCnpj;
-		
 	}
 }
