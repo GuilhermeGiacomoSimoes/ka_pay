@@ -5,11 +5,11 @@ export class ClientRepositoryMemory implements ClientRepositoryInterface{
 	
 	private clients : Client[] = [];
 
-	getAll(): Promise<Client[]> {
+	async getAll(): Promise<Client[]> {
 		return Promise.resolve(this.clients);	
 	}	
 
-	getClientById(uuid: string): Promise<Client | null> {
+	async getClientById(uuid: string): Promise<Client | null> {
 		const client : Client | undefined = 
 			this.clients.find((transactiom) => {
 				    return transactiom.id == uuid;
@@ -17,12 +17,12 @@ export class ClientRepositoryMemory implements ClientRepositoryInterface{
 		return Promise.resolve(client || null);
 	}
 
-	save(client: Client): Promise<Client> {
+	async save(client: Client): Promise<Client> {
 		this.clients.push(client);
 		return Promise.resolve(client);
 	}
 
-	update(client: Client) : Promise<Client | null> {
+	async update(client: Client) : Promise<Client | null> {
 		const indexClientUpdate = this.returnIndexOfClientInArrayMemoryByUuid(client.id);
 		if(indexClientUpdate == -1) {
 			return Promise.resolve(null);
