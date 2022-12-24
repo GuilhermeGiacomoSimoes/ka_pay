@@ -11,10 +11,10 @@ const app: Express = express();
 
 const port = 8080;
 
-app.get('/client', async (req: Request, res: Response) => {
+app.get('/client/:id', async (req: Request, res: Response) => {
 	const repositoryClient = new ClientRepositoryMySQL();
 	const useCase = new GetClient(repositoryClient);
-	const getClientById = useCase.execute('123');
+	const getClientById = useCase.execute(req.params.id);
 	res.send(getClientById);
 });
 
