@@ -29,12 +29,13 @@ function end(): boolean {
 export async function execute<T>(query: string, params: string[]) : Promise<T> {
 	if(init()) {
 		const queryResult = 
-			connection.query(query, params, (err, result) => {
+			connection.execute(query, params, (err, result) => {
 				end();
 				return err ? Promise.reject(err) : Promise.resolve(result);
 			});
 
-		return new Promise<T>((resolve, reject) => queryResult);
+		console.log();
+		return new Promise<T>((resolve, reject) =>  queryResult);
 	}
 
 	return Promise.reject('Error when connect in database');
