@@ -34,7 +34,6 @@ export async function execute<T>(query: string, params: string[]) : Promise<T> {
 				return err ? Promise.reject(err) : Promise.resolve(result);
 			});
 
-		console.log();
 		return new Promise<T>((resolve, reject) =>  queryResult);
 	}
 
