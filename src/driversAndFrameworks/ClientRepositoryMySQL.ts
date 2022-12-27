@@ -28,7 +28,9 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			client.birthDate,
 			client.cpfCnpj,
 			client.id
-		]);
+		]).catch(err => {
+			throw new Error(`err: ${err}`);
+		});
 
 		return Promise.resolve(ClientRepositoryMySQLAdapter.execute(clientDTO));
 	}
@@ -43,7 +45,10 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			id = ?	
 		`;
 	
-		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query, [uuid]);
+		const clientDTO = await execute<ClientInterfaceMySQLDTO>(query, [uuid]).catch(err => {
+			throw new Error(`err: ${err}`);
+		});
+		console.log('aqui depois do execute');
 		return ClientRepositoryMySQLAdapter.execute(clientDTO);
 	}
 	
@@ -56,7 +61,9 @@ export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 			ka_clients
 		`;
 
-		const clientDTO = await execute<ClientInterfaceMySQLDTO[]>(query, []);
+		const clientDTO = await execute<ClientInterfaceMySQLDTO[]>(query, []).catch(err => {
+			throw new Error(`err: ${err}`);
+		});
 		const clients: Client[] = [];
 
 		if(clientDTO) {
