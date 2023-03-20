@@ -1,8 +1,8 @@
 import {Client} from "../domain/entities/Client";
-import {ClientRepositoryInterface} from "../domain/interfaceAdapters/interfaces/repository/ClientRepositoryInterface";
-import {ClientRepositoryMySQLAdapter} from "../domain/interfaceAdapters/interfaces/repository/ClientRepositoryMySQLAdapter";
+import { ClientRepositoryInterface } from "../domain/interfaceAdapters/interfaces/repository/ClientRepositoryInterface";
+import { ClientRepositoryMySQLAdapter } from "../domain/interfaceAdapters/interfaces/repository/ClientRepositoryMySQLAdapter";
 import {ClientInterfaceMySQLDTO} from "./ClientMySQLDTO";
-import { execute } from "./mysqlconfig";
+import { execute } from "./MySQLConfig";
 
 export class ClientRepositoryMySQL implements ClientRepositoryInterface {
 
