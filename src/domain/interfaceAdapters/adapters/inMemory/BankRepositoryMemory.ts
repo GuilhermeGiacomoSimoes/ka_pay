@@ -1,5 +1,5 @@
 import {Bank} from "../../../entities/Bank";
-import {BankRepositoryInterface} from "../BankRepositoryInterface";
+import {BankRepositoryInterface} from "../../interfaces/repository/BankRepositoryInterface";
 
 export class BankRepositoryMemory implements BankRepositoryInterface {
 	

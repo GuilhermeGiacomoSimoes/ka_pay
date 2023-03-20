@@ -1,7 +1,7 @@
 import {Account} from "../entities/Account";
-import {AccountRepositoryInterface} from "../interfaceAdapters/repository/AccountRepositoryInterface";
-import {BankRepositoryInterface} from "../interfaceAdapters/repository/BankRepositoryInterface";
-import {ClientRepositoryInterface} from "../interfaceAdapters/repository/ClientRepositoryInterface";
+import {AccountRepositoryInterface} from "../interfaceAdapters/interfaces/repository/AccountRepositoryInterface";
+import {BankRepositoryInterface} from "../interfaceAdapters/interfaces/repository/BankRepositoryInterface";
+import {ClientRepositoryInterface} from "../interfaceAdapters/interfaces/repository/ClientRepositoryInterface";
 
 export class CreateAccount {
 	private readonly repositoryAccount: AccountRepositoryInterface;

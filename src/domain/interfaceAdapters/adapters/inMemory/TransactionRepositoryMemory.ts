@@ -1,5 +1,5 @@
 import {Transaction} from "../../../entities/Transaction";
-import {TransactionRepositoryInterface} from "../TransactionRepositoryInterface";
+import {TransactionRepositoryInterface} from "../../interfaces/repository/TransactionRepositoryInterface";
 
 export class TransactionRepositoryMemory implements TransactionRepositoryInterface {
 

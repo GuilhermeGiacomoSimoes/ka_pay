@@ -1,7 +1,7 @@
 import {Account} from "../entities/Account";
 import {Transaction} from "../entities/Transaction";
-import {AccountRepositoryInterface} from "../interfaceAdapters/repository/AccountRepositoryInterface";
-import {TransactionRepositoryInterface} from "../interfaceAdapters/repository/TransactionRepositoryInterface";
+import {AccountRepositoryInterface} from "../interfaceAdapters/interfaces/repository/AccountRepositoryInterface";
+import {TransactionRepositoryInterface} from "../interfaceAdapters/interfaces/repository/TransactionRepositoryInterface";
 
 export class CarryOutTransaction {
 	private readonly transactionRepository: TransactionRepositoryInterface

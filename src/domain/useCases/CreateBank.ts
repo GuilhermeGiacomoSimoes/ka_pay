@@ -1,5 +1,5 @@
 import {Bank} from "../entities/Bank";
-import {BankRepositoryInterface} from "../interfaceAdapters/repository/BankRepositoryInterface";
+import {BankRepositoryInterface} from "../interfaceAdapters/interfaces/repository/BankRepositoryInterface";
 
 export class CreateBank {
 	private readonly repository: BankRepositoryInterface;

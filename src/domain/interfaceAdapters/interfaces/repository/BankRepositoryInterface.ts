@@ -1,4 +1,4 @@
-import {Bank} from "../../entities/Bank";
+import {Bank} from "../../../entities/Bank";
 
 export interface BankRepositoryInterface {
 	save(bank: Bank) : Promise<Bank | undefined>;

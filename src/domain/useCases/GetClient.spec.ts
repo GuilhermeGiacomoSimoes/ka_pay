@@ -1,7 +1,7 @@
-import { ClientRepositoryMemory } from "../interfaceAdapters/repository/inMemory/ClientRepositoryMemory";
+import { ClientRepositoryMemory } from "../interfaceAdapters/adapters/inMemory/ClientRepositoryMemory";
 import { GetClient } from "./GetClient";
 import { Client } from '../entities/Client';
-import { ClientRepositoryInterface } from "../interfaceAdapters/repository/ClientRepositoryInterface";
+import { ClientRepositoryInterface } from "../interfaceAdapters/interfaces/repository/ClientRepositoryInterface";
 
 describe('', () => {
 

@@ -1,5 +1,5 @@
 import {CreateClient} from "./CreateClient";
-import {ClientRepositoryMemory} from "../interfaceAdapters/repository/inMemory/ClientRepositoryMemory";
+import {ClientRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/ClientRepositoryMemory";
 import {Client} from "../entities/Client";
 
 describe('Create Client Use Cases', () => {

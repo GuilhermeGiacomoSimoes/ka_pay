@@ -1,5 +1,5 @@
 import {Bank} from "../entities/Bank";
-import {BankRepositoryMemory} from "../interfaceAdapters/repository/inMemory/BankRepositoryMemory";
+import {BankRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/BankRepositoryMemory";
 import {CreateBank} from "./CreateBank";
 
 describe('useCase - createBank', () => {

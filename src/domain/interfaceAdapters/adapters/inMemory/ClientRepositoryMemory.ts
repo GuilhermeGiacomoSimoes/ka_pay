@@ -1,5 +1,5 @@
 import {Client} from "../../../entities/Client";
-import {ClientRepositoryInterface} from "../ClientRepositoryInterface";
+import {ClientRepositoryInterface} from "../../interfaces/repository/ClientRepositoryInterface";
 
 export class ClientRepositoryMemory implements ClientRepositoryInterface{
 	

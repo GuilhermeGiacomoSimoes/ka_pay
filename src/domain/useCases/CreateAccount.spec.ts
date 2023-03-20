@@ -1,9 +1,9 @@
 import {Account} from "../entities/Account";
 import {Bank} from "../entities/Bank";
 import {Client} from "../entities/Client";
-import {AccountRepositoryMemory} from "../interfaceAdapters/repository/inMemory/AccountRepositoryMemory";
-import {BankRepositoryMemory} from "../interfaceAdapters/repository/inMemory/BankRepositoryMemory";
-import {ClientRepositoryMemory} from "../interfaceAdapters/repository/inMemory/ClientRepositoryMemory";
+import {AccountRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/AccountRepositoryMemory";
+import {BankRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/BankRepositoryMemory";
+import {ClientRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/ClientRepositoryMemory";
 import {CreateAccount} from "./CreateAccount";
 
 describe('useCase - CreateAccount', () => {
