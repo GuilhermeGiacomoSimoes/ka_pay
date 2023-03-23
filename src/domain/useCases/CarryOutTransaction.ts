@@ -1,4 +1,5 @@
 import {Account} from "../entities/Account";
+import { valueVerification } from "../entities/services/ValueVerification";
 import {Transaction} from "../entities/Transaction";
 import {AccountRepositoryInterface} from "../interfaceAdapters/interfaces/repository/AccountRepositoryInterface";
 import {TransactionRepositoryInterface} from "../interfaceAdapters/interfaces/repository/TransactionRepositoryInterface";
@@ -13,9 +14,7 @@ export class CarryOutTransaction {
 	}
 
 	async execute(value: number, accountOriginUUID: string, accountDestinationUUID: string) {
-		if(value < 0) {
-			throw new Error("Value is not valid");
-		}
+		valueVerification(value);
 
 		const accountOriginDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
 		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountDestinationUUID);
