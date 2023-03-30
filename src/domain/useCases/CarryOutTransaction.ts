@@ -8,12 +8,19 @@ export class CarryOutTransaction {
 	private readonly transactionRepository: TransactionRepositoryInterface
 	private readonly accountRepository: AccountRepositoryInterface
 
-	constructor(transactionRepository: TransactionRepositoryInterface, accountRepository: AccountRepositoryInterface) {
+	constructor(
+		transactionRepository: TransactionRepositoryInterface, 
+		accountRepository: AccountRepositoryInterface
+	) {
 		this.transactionRepository =  transactionRepository;
 		this.accountRepository =  accountRepository;
 	}
 
-	async execute(value: number, accountOriginUUID: string, accountDestinationUUID: string) {
+	async execute(
+		value: number, 
+		accountOriginUUID: string, 
+		accountDestinationUUID: string
+	) {
 		valueVerification(value);
 
 		const accountOriginDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
@@ -26,10 +33,16 @@ export class CarryOutTransaction {
 			throw new Error("Value is greater than the balance");
 
 		const accountOrigin = new Account(
-			accountOriginDatabase.id, accountOriginDatabase.idClient, accountOriginDatabase.idBank, accountOriginDatabase.money - value
+			accountOriginDatabase.id, 
+			accountOriginDatabase.idClient, 
+			accountOriginDatabase.idBank, 
+			accountOriginDatabase.money - value
 		);
 		const accountDestination = new Account(
-			accountDestinationDatabase.id, accountDestinationDatabase.idClient, accountDestinationDatabase.idBank, accountDestinationDatabase.money + value
+			accountDestinationDatabase.id, 
+			accountDestinationDatabase.idClient, 
+			accountDestinationDatabase.idBank, 
+			accountDestinationDatabase.money + value
 		);
 
 		this.accountRepository.update(accountOrigin);
