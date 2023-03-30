@@ -1,4 +1,5 @@
 import {Account} from "../entities/Account";
+import { getAccountById } from "../entities/services/GetAccountById";
 import { valueVerification } from "../entities/services/ValueVerification";
 import {Transaction} from "../entities/Transaction";
 import {AccountRepositoryInterface} from "../interfaceAdapters/interfaces/repository/AccountRepositoryInterface";
@@ -23,11 +24,8 @@ export class CarryOutTransaction {
 	) {
 		valueVerification(value);
 
-		const accountOriginDatabase = await this.accountRepository.getAccountById(accountOriginUUID);
-		const accountDestinationDatabase = await this.accountRepository.getAccountById(accountDestinationUUID);
-
-		if(accountOriginDatabase == undefined || accountDestinationDatabase == undefined)
-			throw new Error("Not find account");
+		const accountOriginDatabase = await getAccountById(accountOriginUUID, this.accountRepository);
+		const accountDestinationDatabase = await getAccountById(accountDestinationUUID, this.accountRepository);
 
 		if(accountOriginDatabase.money - value < 0)
 			throw new Error("Value is greater than the balance");
