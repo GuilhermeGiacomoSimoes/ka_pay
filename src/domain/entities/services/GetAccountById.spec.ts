@@ -4,7 +4,6 @@ import { getAccountById } from "./GetAccountById";
 import { Account } from '../Account';
 
 describe('get account by id', () => {
-
     test('verify throw if return account null', async () => {
         const repository = new AccountRepositoryMemory();
         const uuid = 'uuid-unknow';
@@ -14,9 +13,9 @@ describe('get account by id', () => {
     test('verify nor throw if return valid value', async () => {
         const repository = new AccountRepositoryMemory();
 
-        const uuid = 'uuid-acount-test-null';
-        const uuidClient = 'uuid-client-test-null';
-        const uuidBank = 'uuid-bank-test-null';
+        const uuid = 'uuid-acount-test-valid';
+        const uuidClient = 'uuid-client-test-valid';
+        const uuidBank = 'uuid-bank-test-valid';
         const money = 100;
 
         await repository.save(new Account(uuid, uuidClient, uuidBank, 100));
