@@ -1,5 +1,5 @@
 import {Account} from "../../../entities/Account";
-import {AccountRepositoryInterface} from "../AccountRepositoryInterface";
+import {AccountRepositoryInterface} from "../../interfaces/repository/AccountRepositoryInterface";
 
 export class AccountRepositoryMemory implements AccountRepositoryInterface {
 	

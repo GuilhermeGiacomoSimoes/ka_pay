@@ -1,6 +1,6 @@
 {
   "name": "ka_pay",
-  "version": "1.0.0",
+  "version": "1.0.0-BETA",
   "description": "the example of the clean architecture",
   "main": "index.js",
   "scripts": {
@@ -27,14 +27,18 @@
   "dependencies": {
     "@types/jest": "^28.1.8",
     "@types/mysql": "^2.15.21",
+    "dd-trace": "^3.15.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "hot-shots": "^10.0.0",
     "jest": "^29.0.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.8.5",
+    "ts-jest": "^29.1.1",
     "typescript": "^4.8.3"
   }
 }

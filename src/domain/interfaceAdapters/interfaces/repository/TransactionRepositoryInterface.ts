@@ -1,4 +1,4 @@
-import {Transaction} from "../../entities/Transaction";
+import {Transaction} from "../../../entities/Transaction";
 
 export interface TransactionRepositoryInterface {
 	listTransactions(): Promise<Transaction[]>;

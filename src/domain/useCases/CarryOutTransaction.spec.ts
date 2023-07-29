@@ -1,6 +1,6 @@
 import {Account} from "../entities/Account";
-import {AccountRepositoryMemory} from "../interfaceAdapters/repository/inMemory/AccountRepositoryMemory";
-import {TransactionRepositoryMemory} from "../interfaceAdapters/repository/inMemory/TransactionRepositoryMemory";
+import {AccountRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/AccountRepositoryMemory";
+import {TransactionRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/TransactionRepositoryMemory";
 import {CarryOutTransaction} from "./CarryOutTransaction";
 
 describe('carry out transaction', () => {

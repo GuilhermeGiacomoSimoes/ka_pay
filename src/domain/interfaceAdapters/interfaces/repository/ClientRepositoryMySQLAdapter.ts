@@ -1,5 +1,5 @@
-import {ClientInterfaceMySQLDTO} from "../../../driversAndFrameworks/ClientMySQLDTO";
-import {Client} from "../../entities/Client";
+import {ClientInterfaceMySQLDTO} from "../../../../driversAndFrameworks/ClientMySQLDTO";
+import {Client} from "../../../entities/Client";
 
 export abstract class ClientRepositoryMySQLAdapter {
 	static execute(cleintDTO : ClientInterfaceMySQLDTO | undefined) : Client | null {

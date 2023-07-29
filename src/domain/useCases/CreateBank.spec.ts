@@ -1,10 +1,10 @@
 import {Bank} from "../entities/Bank";
-import {BankRepositoryMemory} from "../interfaceAdapters/repository/inMemory/BankRepositoryMemory";
+import {BankRepositoryMemory} from "../interfaceAdapters/adapters/inMemory/BankRepositoryMemory";
 import {CreateBank} from "./CreateBank";
 
 describe('useCase - createBank', () => {
 
-	let createBank : CreateBank;
+	let createBank: CreateBank;
 	beforeEach(() => {
 		const repository = new BankRepositoryMemory();
 		createBank = new CreateBank(repository);

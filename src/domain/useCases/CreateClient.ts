@@ -1,5 +1,5 @@
 import {Client} from "../entities/Client";
-import {ClientRepositoryInterface} from "../interfaceAdapters/repository/ClientRepositoryInterface";
+import {ClientRepositoryInterface} from "../interfaceAdapters/interfaces/repository/ClientRepositoryInterface";
 
 export class CreateClient {
 	private readonly clientRepository: ClientRepositoryInterface;

@@ -1,4 +1,4 @@
-import {Account} from "../../entities/Account";
+import {Account} from "../../../entities/Account";
 
 export interface AccountRepositoryInterface {
 	save(acoount: Account): any;

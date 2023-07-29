@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import {ClientRepositoryMySQL} from './ClientRepositoryMySQL';
 import {CreateClient} from '../domain/useCases/CreateClient';
 import {Client} from '../domain/entities/Client';
+import { GetClient } from '../domain/useCases/GetClient';
 
 dotenv.config();
 
@@ -10,8 +11,11 @@ const app: Express = express();
 
 const port = 8080;
 
-app.get('/client', async (req: Request, res: Response) => {
-	res.send('Express + TypeScript server');
+app.get('/client/:id', async (req: Request, res: Response) => {
+	const repositoryClient = new ClientRepositoryMySQL();
+	const useCase = new GetClient(repositoryClient);
+	const getClientById = useCase.execute(req.params.id);
+	res.send(getClientById);
 });
 
 app.put('/client', async (req: Request, res: Response) => {
