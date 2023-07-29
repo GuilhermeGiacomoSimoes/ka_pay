@@ -4,7 +4,7 @@ import {CreateBank} from "./CreateBank";
 
 describe('useCase - createBank', () => {
 
-	let createBank : CreateBank;
+	let createBank: CreateBank;
 	beforeEach(() => {
 		const repository = new BankRepositoryMemory();
 		createBank = new CreateBank(repository);

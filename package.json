@@ -1,6 +1,6 @@
 {
   "name": "ka_pay",
-  "version": "1.0.0",
+  "version": "1.0.0-BETA",
   "description": "the example of the clean architecture",
   "main": "index.js",
   "scripts": {
@@ -35,11 +35,10 @@
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.21.5",
     "@jest/globals": "^29.5.0",
     "@types/express": "^4.17.14",
     "@types/node": "^18.8.5",
-    "ts-jest": "^29.1.0",
+    "ts-jest": "^29.1.1",
     "typescript": "^4.8.3"
   }
 }
